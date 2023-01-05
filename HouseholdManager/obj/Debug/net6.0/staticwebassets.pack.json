@@ -9,6 +9,14 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "G:\\My Drive\\LaunchCode\\LiftOff\\RHouseholdManager\\HouseholdManager\\wwwroot\\favicon-16x16.png",
+      "PackagePath": "staticwebassets\\favicon-16x16.png"
+    },
+    {
+      "Id": "G:\\My Drive\\LaunchCode\\LiftOff\\RHouseholdManager\\HouseholdManager\\wwwroot\\favicon-32x32.png",
+      "PackagePath": "staticwebassets\\favicon-32x32.png"
+    },
+    {
       "Id": "G:\\My Drive\\LaunchCode\\LiftOff\\RHouseholdManager\\HouseholdManager\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },

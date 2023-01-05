@@ -25,42 +25,30 @@ namespace HouseholdManager.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: Task/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Tasks == null)
-            {
-                return NotFound();
-            }
 
-            var task = await _context.Tasks
-                .Include(t => t.Room)
-                .FirstOrDefaultAsync(m => m.TaskId == id);
-            if (task == null)
-            {
-                return NotFound();
-            }
-
-            return View(task);
-        }
-
-        // GET: Task/Create
-        public IActionResult Create()
+        // GET: Task/AddOrEdit
+        public IActionResult AddOrEdit(int id = 0)
         {
             ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name");
-            return View();
+            if (id == 0)
+                return View(new Models.Task());
+            else
+                return View(_context.Tasks.Find(id));
         }
 
-        // POST: Task/Create
+        // POST: Task/AddOrEdit
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TaskId,TaskName,RoomId,Point")] Models.Task task)
+        public async Task<IActionResult> AddOrEdit([Bind("TaskId,TaskName,RoomId,Point")] Models.Task task)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(task);
+                if (task.TaskId == 0)
+                    _context.Add(task);
+                else
+                    _context.Update(task);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -68,77 +56,7 @@ namespace HouseholdManager.Controllers
             return View(task);
         }
 
-        // GET: Task/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Tasks == null)
-            {
-                return NotFound();
-            }
 
-            var task = await _context.Tasks.FindAsync(id);
-            if (task == null)
-            {
-                return NotFound();
-            }
-            ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", task.RoomId);
-            return View(task);
-        }
-
-        // POST: Task/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TaskId,TaskName,RoomId,Point")] Models.Task task)
-        {
-            if (id != task.TaskId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(task);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!TaskExists(task.TaskId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", task.RoomId);
-            return View(task);
-        }
-
-        // GET: Task/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Tasks == null)
-            {
-                return NotFound();
-            }
-
-            var task = await _context.Tasks
-                .Include(t => t.Room)
-                .FirstOrDefaultAsync(m => m.TaskId == id);
-            if (task == null)
-            {
-                return NotFound();
-            }
-
-            return View(task);
-        }
 
         // POST: Task/Delete/5
         [HttpPost, ActionName("Delete")]
@@ -159,9 +77,5 @@ namespace HouseholdManager.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TaskExists(int id)
-        {
-          return _context.Tasks.Any(e => e.TaskId == id);
-        }
     }
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lN90zggzc6dT50NGEACxQzgzrhQ6edULHsa0izxOo5Y=",
+  "Hash": "z+PixlnhEfq7ixYL579UZmrFbde7f+h7rZzyz7iCa3Y=",
   "Source": "HouseholdManager",
   "BasePath": "_content/HouseholdManager",
   "Mode": "Default",
@@ -83,6 +83,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "G:\\My Drive\\LaunchCode\\LiftOff\\RHouseholdManager\\HouseholdManager\\wwwroot\\favicon-16x16.png",
+      "SourceId": "HouseholdManager",
+      "SourceType": "Discovered",
+      "ContentRoot": "G:\\My Drive\\LaunchCode\\LiftOff\\RHouseholdManager\\HouseholdManager\\wwwroot\\",
+      "BasePath": "_content/HouseholdManager",
+      "RelativePath": "favicon-16x16.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\favicon-16x16.png"
+    },
+    {
+      "Identity": "G:\\My Drive\\LaunchCode\\LiftOff\\RHouseholdManager\\HouseholdManager\\wwwroot\\favicon-32x32.png",
+      "SourceId": "HouseholdManager",
+      "SourceType": "Discovered",
+      "ContentRoot": "G:\\My Drive\\LaunchCode\\LiftOff\\RHouseholdManager\\HouseholdManager\\wwwroot\\",
+      "BasePath": "_content/HouseholdManager",
+      "RelativePath": "favicon-32x32.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\favicon-32x32.png"
     },
     {
       "Identity": "G:\\My Drive\\LaunchCode\\LiftOff\\RHouseholdManager\\HouseholdManager\\wwwroot\\js\\site.js",

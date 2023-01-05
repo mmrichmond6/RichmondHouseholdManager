@@ -28,20 +28,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/My Drive/LaunchCode/LiftOff/RHouseholdManager/HouseholdManager/Views/Room/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9vbVxDcmVhdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[G:/My Drive/LaunchCode/LiftOff/RHouseholdManager/HouseholdManager/Views/Room/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9vbVxEZWxldGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[G:/My Drive/LaunchCode/LiftOff/RHouseholdManager/HouseholdManager/Views/Room/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9vbVxEZXRhaWxzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[G:/My Drive/LaunchCode/LiftOff/RHouseholdManager/HouseholdManager/Views/Room/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9vbVxFZGl0LmNzaHRtbA==
+[G:/My Drive/LaunchCode/LiftOff/RHouseholdManager/HouseholdManager/Views/Room/AddOrEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9vbVxBZGRPckVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [G:/My Drive/LaunchCode/LiftOff/RHouseholdManager/HouseholdManager/Views/Room/Index.cshtml]
@@ -56,40 +44,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/My Drive/LaunchCode/LiftOff/RHouseholdManager/HouseholdManager/Views/Task/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza1xDcmVhdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[G:/My Drive/LaunchCode/LiftOff/RHouseholdManager/HouseholdManager/Views/Task/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza1xEZWxldGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[G:/My Drive/LaunchCode/LiftOff/RHouseholdManager/HouseholdManager/Views/Task/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza1xEZXRhaWxzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[G:/My Drive/LaunchCode/LiftOff/RHouseholdManager/HouseholdManager/Views/Task/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza1xFZGl0LmNzaHRtbA==
+[G:/My Drive/LaunchCode/LiftOff/RHouseholdManager/HouseholdManager/Views/Task/AddOrEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza1xBZGRPckVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [G:/My Drive/LaunchCode/LiftOff/RHouseholdManager/HouseholdManager/Views/Task/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/My Drive/LaunchCode/LiftOff/RHouseholdManager/HouseholdManager/Views/User/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDcmVhdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[G:/My Drive/LaunchCode/LiftOff/RHouseholdManager/HouseholdManager/Views/User/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEZWxldGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[G:/My Drive/LaunchCode/LiftOff/RHouseholdManager/HouseholdManager/Views/User/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEZXRhaWxzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[G:/My Drive/LaunchCode/LiftOff/RHouseholdManager/HouseholdManager/Views/User/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxFZGl0LmNzaHRtbA==
+[G:/My Drive/LaunchCode/LiftOff/RHouseholdManager/HouseholdManager/Views/User/AddOrEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxBZGRPckVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [G:/My Drive/LaunchCode/LiftOff/RHouseholdManager/HouseholdManager/Views/User/Index.cshtml]

@@ -20,7 +20,7 @@ namespace HouseholdManager.Models
         public Room? Room { get; set; }
 
         [Range(1, 5, ErrorMessage = "Amount should be greater than zero and no more than five.")]
-        public int Point { get; set; }
+        public int Points { get; set; }
 
     }
 }

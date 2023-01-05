@@ -1,0 +1,49 @@
+﻿@model HouseholdManager.Models.User
+
+@{
+    ViewData["PageTitle"] = Model.UserId == 0 ? "Create a new user" : "Edit user";
+}
+
+
+<<div class="row">
+    <div class="col-md-7">
+        <div class="widget p-5" style="background-color: #1a222b">
+            <form asp-action="AddOrEdit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" name="UserId" value="@Model.UserId" />
+                <div class="mb-3">
+                    <div class='e-btn-group custom-rbt-group'>
+                        <input type="radio" id="radioleft" name="Type" value="Admin" checked="@(Model.Type=="Admin")" />
+                        <label class="e-btn" for="radioleft">Admin</label>
+                        <input type="radio" id="radiomiddle" name="Type" value="User" checked="@(Model.Type=="User")" />
+                        <label class="e-btn" for="radiomiddle">User</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <ejs-textbox id="userName" placeholder="UserName" ejs-for="UserName" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-textbox id="userIcon" placeholder="UserIcon" ejs-for="UserIcon" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="UserIcon" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-textbox id="email" placeholder="Email" ejs-for="Email" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <ejs-button id="submit" type="submit" content="Submit" cssClass="e-success"></ejs-button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="widget h-100 d-flex justify-content-center align-items-center">
+            <i class="fa-regular fa-user fa-2xl"></i>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

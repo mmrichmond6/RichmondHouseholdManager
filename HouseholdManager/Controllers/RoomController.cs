@@ -24,114 +24,25 @@ namespace HouseholdManager.Controllers
               return View(await _context.Rooms.ToListAsync());
         }
 
-        // GET: Room/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Rooms == null)
-            {
-                return NotFound();
-            }
-
-            var room = await _context.Rooms
-                .FirstOrDefaultAsync(m => m.RoomId == id);
-            if (room == null)
-            {
-                return NotFound();
-            }
-
-            return View(room);
-        }
-
-        // GET: Room/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Room/Create
+        // POST: Room/AddOrEdit
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RoomId,Name,Icon")] Room room)
+        public async Task<IActionResult> AddOrEdit([Bind("RoomId,Name,Icon")] Room room)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(room);
+                if (room.RoomId == 0)
+                    _context.Add(room);
+                else
+                    _context.Update(room);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(room);
         }
 
-        // GET: Room/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Rooms == null)
-            {
-                return NotFound();
-            }
-
-            var room = await _context.Rooms.FindAsync(id);
-            if (room == null)
-            {
-                return NotFound();
-            }
-            return View(room);
-        }
-
-        // POST: Room/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RoomId,Name,Icon")] Room room)
-        {
-            if (id != room.RoomId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(room);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!RoomExists(room.RoomId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(room);
-        }
-
-        // GET: Room/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Rooms == null)
-            {
-                return NotFound();
-            }
-
-            var room = await _context.Rooms
-                .FirstOrDefaultAsync(m => m.RoomId == id);
-            if (room == null)
-            {
-                return NotFound();
-            }
-
-            return View(room);
-        }
 
         // POST: Room/Delete/5
         [HttpPost, ActionName("Delete")]
@@ -152,9 +63,5 @@ namespace HouseholdManager.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool RoomExists(int id)
-        {
-          return _context.Rooms.Any(e => e.RoomId == id);
-        }
     }
 }
