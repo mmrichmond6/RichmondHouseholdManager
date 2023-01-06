@@ -30,6 +30,7 @@ namespace HouseholdManager.Controllers
         public IActionResult AddOrEdit(int id = 0)
         {
             ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name");
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserName");
             if (id == 0)
                 return View(new Models.Task());
             else
@@ -41,7 +42,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit([Bind("TaskId,TaskName,RoomId,Points")] Models.Task task)
+        public async Task<IActionResult> AddOrEdit([Bind("TaskId,TaskName,TaskIcon,RoomId,Points,UserId")] Models.Task task)
         {
             if (ModelState.IsValid)
             {
@@ -53,6 +54,7 @@ namespace HouseholdManager.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", task.RoomId);
+            ViewData["RoomId"] = new SelectList(_context.Users, "UserId", "UserName", task.UserId);
             return View(task);
         }
 

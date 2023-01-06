@@ -21,7 +21,7 @@ namespace HouseholdManager.Controllers
         // GET: User
         public async Task<IActionResult> Index()
         {
-              return View(await _context.User.ToListAsync());
+              return View(await _context.Users.ToListAsync());
         }
 
 
@@ -31,7 +31,7 @@ namespace HouseholdManager.Controllers
             if (id == 0)
                 return View(new User());
             else
-                return View(_context.User.Find(id));
+                return View(_context.Users.Find(id));
         }
 
         // POST: User/AddOrEdit
@@ -59,14 +59,14 @@ namespace HouseholdManager.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.User == null)
+            if (_context.Users == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.User'  is null.");
             }
-            var user = await _context.User.FindAsync(id);
+            var user = await _context.Users.FindAsync(id);
             if (user != null)
             {
-                _context.User.Remove(user);
+                _context.Users.Remove(user);
             }
             
             await _context.SaveChangesAsync();

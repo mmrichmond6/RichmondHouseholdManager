@@ -18,7 +18,7 @@ namespace HouseholdManager.Models
         public string Type { get; set; } = "User";
 
         [DataType(DataType.EmailAddress)]
-        public string Email { get; set; } = "";
+        public string? Email { get; set; } = "xxxxx@xxxx.com";
 
         [Column(TypeName = "nvarchar(5)")]
         public string UserIcon { get; set; } = "";
