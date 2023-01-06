@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "IFsOBvqqlwS1uH+4r9skSJ+8Y5XLU1RFmQGBGN/VNzo=",
+  "Hash": "KOMmH5DJCa9sajL+9GNCy65dZ157rniLQLQPJOHq2A0=",
   "Source": "HouseholdManager",
   "BasePath": "_content/HouseholdManager",
   "Mode": "Default",
@@ -1069,6 +1069,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "G:\\My Drive\\LaunchCode\\LiftOff\\MRHousehold2\\HouseholdManager\\wwwroot\\profile.jpg",
+      "SourceId": "HouseholdManager",
+      "SourceType": "Discovered",
+      "ContentRoot": "G:\\My Drive\\LaunchCode\\LiftOff\\MRHousehold2\\HouseholdManager\\wwwroot\\",
+      "BasePath": "_content/HouseholdManager",
+      "RelativePath": "profile.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\profile.jpg"
     }
   ]
 }
