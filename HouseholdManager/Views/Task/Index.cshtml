@@ -1,47 +1,50 @@
 ﻿@model IEnumerable<HouseholdManager.Models.Task>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["PageTitle"] = "Tasks";
+    ViewData["PageActionText"] = "+ New Task";
+    ViewData["PageActionUrl"] = "/Task/AddOrEdit";
 }
 
-<h1>Index</h1>
+<div class="row">
+    <div class="col-md-7">
+        <ejs-grid id="tasks" dataSource="@Model" gridLines="None"
+                  allowSorting="true" allowPaging="true">
+            <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
+            <e-grid-columns>
+                <e-grid-column headerText="TaskName" field="TaskNameWithIcon"></e-grid-column>
+                <e-grid-column headerText="Points" template="#pointsColumnTemplate" width="150px">
+                </e-grid-column>
+                <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="100px"></e-grid-column>
+            </e-grid-columns>
+        </ejs-grid>
+    </div>
+    <div class="col-md-5">
+        <div class="widget h-100 d-flex justify-content-center align-items-center">
+            <i class="fa-regular fa-user fa-2xl"></i>
+        </div>
+    </div>
+</div>
 
-<p>
-    <a asp-action="AddOrEdit">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TaskName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Room)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Points)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TaskName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Room.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Points)
-            </td>
-            <td>
-                    <a asp-action="AddOrEdit" asp-route-id="@item.TaskId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TaskId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TaskId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<script id="pointsColumnTemplate" type="text/x-template">
+    ${if(Points=="5")}
+        <span class="badge bg-success">${Points}</span>
+    ${else}
+        <span class="badge bg-danger">${Points}</span>
+        ${/if}
+</script>
+
+<script id="actionColumnTemplate" type="text/x-template">
+    <div class="d-flex flex-row justify-content-start">
+        <a class="btn btn-sm no-a-decoration" href="/Task/AddOrEdit/${TaskId}">
+            <i class="fa-solid fa-pen fa-lg"></i>
+        </a>
+        <form action="/Task/Delete/${TaskId}" method="post">
+    @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-sm btn-link no-a-decoration"
+            onclick="return confirm(&quot;Are sure to delete this record?&quot;)">
+                <i class="fa-solid fa-trash-can fa-lg text-danger"></i>
+            </button>
+        </form>
+    </div>
+</script>

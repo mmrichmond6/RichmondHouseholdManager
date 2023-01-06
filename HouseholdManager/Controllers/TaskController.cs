@@ -41,7 +41,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit([Bind("TaskId,TaskName,RoomId,Point")] Models.Task task)
+        public async Task<IActionResult> AddOrEdit([Bind("TaskId,TaskName,RoomId,Points")] Models.Task task)
         {
             if (ModelState.IsValid)
             {

@@ -13,6 +13,9 @@ namespace HouseholdManager.Models
         [Required(ErrorMessage = "Name of task is required.")]
         public string TaskName { get; set; }
 
+        [Column(TypeName = "nvarchar(5)")]
+        public string TaskIcon { get; set; } = "";
+
         //RoomId-Foreign Key
         [Range(1, int.MaxValue, ErrorMessage = "Please select a room")]
         public int RoomId { get; set; }
@@ -20,7 +23,16 @@ namespace HouseholdManager.Models
         public Room? Room { get; set; }
 
         [Range(1, 5, ErrorMessage = "Amount should be greater than zero and no more than five.")]
-        public int Points { get; set; }
+        public int Points { get; set; } = 5;
+
+        [NotMapped]
+        public string? TaskNameWithIcon
+        {
+            get
+            {
+                return this.TaskIcon + " " + this.TaskName;
+            }
+        }
 
     }
 }
