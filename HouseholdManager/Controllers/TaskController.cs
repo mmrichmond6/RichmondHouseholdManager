@@ -29,8 +29,8 @@ namespace HouseholdManager.Controllers
         // GET: Task/AddOrEdit
         public IActionResult AddOrEdit(int id = 0)
         {
-            ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name");
-            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserName");
+            PopulateRooms();
+            PopulateUsers();
             if (id == 0)
                 return View(new Models.Task());
             else
@@ -79,5 +79,22 @@ namespace HouseholdManager.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [NonAction]
+        public void PopulateRooms()
+        {
+            var RoomCollection = _context.Rooms.ToList();
+            Room DefaultRoom = new Room() { RoomId = 0, Name = "Choose a room"};
+            RoomCollection.Insert(0,DefaultRoom);
+            ViewBag.Rooms = RoomCollection;
+        }
+
+        [NonAction]
+        public void PopulateUsers()
+        {
+            var UserCollection = _context.Users.ToList();
+            User DefaultUser = new User() { UserId = 0, UserName = "Choose a user" };
+            UserCollection.Insert(0, DefaultUser);
+            ViewBag.Users = UserCollection;
+        }
     }
 }

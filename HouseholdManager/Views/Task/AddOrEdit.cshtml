@@ -33,13 +33,17 @@
                     floatLabelType="Always" multiline="true"></ejs-textbox>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="RoomId" class="control-label"></label>
-                    <select asp-for="RoomId" class ="form-control" asp-items="ViewBag.RoomId"></select>
+                    <ejs-dropdownlist id="ddlRoom" ejs-for="RoomId"
+                    dataSource="@ViewBag.Rooms" placeholder="Room" floatLabelType="Always">
+                        <e-dropdownlist-fields value="RoomId" text="Name"></e-dropdownlist-fields>
+                    </ejs-dropdownlist>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="UserId" class="control-label"></label>
-                    <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
-                </div>               
+                    <ejs-dropdownlist id="ddlUser" ejs-for="UserId"
+                    dataSource="@ViewBag.Users" placeholder="User" floatLabelType="Always">
+                        <e-dropdownlist-fields value="UserId" text="UserName"></e-dropdownlist-fields>
+                    </ejs-dropdownlist>
+                </div>             
                 <ejs-button id="submit" type="submit" content="Submit" cssClass="e-success"></ejs-button>
         </form>
         </div>
