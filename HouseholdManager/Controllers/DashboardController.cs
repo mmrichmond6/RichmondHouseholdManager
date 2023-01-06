@@ -20,11 +20,17 @@ namespace HouseholdManager.Controllers
             DateTime StartDate = DateTime.Today.AddDays(-6);
             DateTime EndDate = DateTime.Today;
 
-            List<Models.Task> SelectedTasks = await _context.Tasks
+            List<Models.Task> SelectedTasksToDo = await _context.Tasks
                 .Include(t => t.Room).Include(u => u.User)
-                .Where(y => y.Date>= StartDate && y.Date<= EndDate)
+                .Where(y => y.Date>= StartDate && y.Date<= EndDate && y.Type == "ToDo")
                 .ToListAsync();
+            ViewBag.SelectedTasksToDo = SelectedTasksToDo;
 
+            List<Models.Task> SelectedTasksDone = await _context.Tasks
+                .Include(t => t.Room).Include(u => u.User)
+                .Where(y => y.Date >= StartDate && y.Date <= EndDate && y.Type == "Done")
+                .ToListAsync();
+            ViewBag.SelectedTasksDone = SelectedTasksDone;
 
             return View();
         }
