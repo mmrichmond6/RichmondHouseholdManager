@@ -16,7 +16,11 @@
                     <span asp-validation-for="TaskName" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <ejs-rating id="points" placeholder="Points" ejs-for="@Model.Points" floatLabelType="Always"></ejs-rating>
+                    <ejs-textbox id="taskIcon" placeholder="TaskIcon" ejs-for="TaskIcon" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="TaskIcon" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-rating id="points" placeholder="Points" ejs-for="Points" floatLabelType="Always"></ejs-rating>
                     <span asp-validation-for="Points" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
@@ -26,9 +30,7 @@
                 <div class="mb-3">
                     <label asp-for="UserId" class="control-label"></label>
                     <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
-                </div>
-
-                
+                </div>               
                 <ejs-button id="submit" type="submit" content="Submit" cssClass="e-success"></ejs-button>
         </form>
         </div>

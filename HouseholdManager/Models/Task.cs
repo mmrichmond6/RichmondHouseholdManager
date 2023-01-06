@@ -1,6 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+using HouseholdManager.Models;
 
 namespace HouseholdManager.Models
 {
@@ -39,6 +43,5 @@ namespace HouseholdManager.Models
                 return this.TaskIcon + " " + this.TaskName;
             }
         }
-
     }
 }
