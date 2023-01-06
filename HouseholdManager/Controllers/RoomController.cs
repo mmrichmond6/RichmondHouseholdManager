@@ -48,7 +48,7 @@ namespace HouseholdManager.Controllers
                 else
                     _context.Update(room);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Dashboard");
             }
             return View(room);
         }
@@ -70,7 +70,7 @@ namespace HouseholdManager.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Dashboard");
         }
 
     }

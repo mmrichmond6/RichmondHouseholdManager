@@ -49,3 +49,46 @@
         </form>
     </div>
 </script>
+
+@*Doughnut Chart*@
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="widget chart">
+            <div class="p-4">
+                <h5 class="fw-bold">Points Earned by User (Last week)</h5>
+            </div>
+            <ejs-accumulationchart id="doughnutchart" enableSmartLabels background="#1a222b">
+                <e-accumulation-series-collection>
+                    <e-accumulation-series dataSource="@ViewBag.DoughnutChartData"
+                    xName="userNameWithIcon" yName="amount" innerRadius="40%" legendShape="Circle">
+                        <e-accumulationseries-datalabel name="formattedAmount" visible></e-accumulationseries-datalabel>
+                    </e-accumulation-series>
+                </e-accumulation-series-collection>
+                <e-accumulationchart-legendsettings position="Top">
+                    <e-legendsettings-textstyle  color="#fff" size="1rem"></e-legendsettings-textstyle>
+                </e-accumulationchart-legendsettings>
+                <e-accumulationchart-tooltipsettings enable></e-accumulationchart-tooltipsettings>
+            </ejs-accumulationchart>
+        </div>
+    </div>
+
+    @*Recent Transaction and More*@
+
+        <div class="col-md-5">
+            <div class="widget">
+                <div class="p-4">
+                    <h5 class="fw-bold">Recent Tasks</h5>
+                </div>
+                <div class="px-4 pb-4">
+                    <ejs-grid id="recent-tasks"
+                              dataSource="@ViewBag.RecentTasks" gridLines="None">
+                        <e-grid-columns>
+                            <e-grid-column headerText="Task" field="TaskNameWithIcon" textAlign="Left"></e-grid-column>
+                            <e-grid-column headerText="Date" field="Date" typeof="date" format="MMM-dd-yy" textAlign="Center"></e-grid-column>
+                            <e-grid-column headerText="User" field="UserNameWithIcon" textAlign="Left"></e-grid-column>
+                        </e-grid-columns>
+                    </ejs-grid>
+                </div>
+            </div>
+        </div>
+</div>

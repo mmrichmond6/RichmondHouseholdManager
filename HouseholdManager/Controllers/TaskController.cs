@@ -51,7 +51,7 @@ namespace HouseholdManager.Controllers
                 else
                     _context.Update(task);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Dashboard");
             }
             PopulateRooms();
             PopulateUsers();
@@ -76,7 +76,7 @@ namespace HouseholdManager.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Dashboard");
         }
 
         [NonAction]
