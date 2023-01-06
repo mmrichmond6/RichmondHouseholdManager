@@ -35,12 +35,35 @@ namespace HouseholdManager.Models
         [Range(1, 5, ErrorMessage = "Amount should be greater than zero and no more than five.")]
         public int Points { get; set; }
 
+        [Column(TypeName = "nvarchar(75)")]
+        public string? Instructions { get; set; }
+
+        public DateTime Date { get; set; } = DateTime.Now;
+
         [NotMapped]
         public string? TaskNameWithIcon
         {
             get
             {
                 return this.TaskIcon + " " + this.TaskName;
+            }
+        }
+
+        [NotMapped]
+        public string? RoomNameWithIcon
+        {
+            get
+            {
+                return Room == null ? "" : Room.Icon + " " + Room.Name;
+            }
+        }
+
+        [NotMapped]
+        public string? UserNameWithIcon
+        {
+            get
+            {
+                return User == null ? "" : User.UserIcon + " " + User.UserName;
             }
         }
     }

@@ -21,15 +21,15 @@
                 </div>
                 <div class="mb-3">
                     <ejs-textbox id="userName" placeholder="UserName" ejs-for="UserName" floatLabelType="Always"></ejs-textbox>
-                    <span asp-validation-for="UserName" class="text-danger"></span>
+                    <span asp-validation-for="UserName" class="text-danger" fs-6></span>
                 </div>
                 <div class="mb-3">
                     <ejs-textbox id="userIcon" placeholder="UserIcon" ejs-for="UserIcon" floatLabelType="Always"></ejs-textbox>
-                    <span asp-validation-for="UserIcon" class="text-danger"></span>
+                    <span asp-validation-for="UserIcon" class="text-danger" fs-6></span>
                 </div>
                 <div class="mb-3">
                     <ejs-textbox id="email" placeholder="Email" ejs-for="Email" floatLabelType="Always"></ejs-textbox>
-                    <span asp-validation-for="Email" class="text-danger"></span>
+                    <span asp-validation-for="Email" class="text-danger" fs-6></span>
                 </div>
                 <ejs-button id="submit" type="submit" content="Submit" cssClass="e-success"></ejs-button>
             </form>
@@ -42,8 +42,8 @@
     </div>
 </div>
 
-@section Scripts {
+@*@section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-}
+}*@

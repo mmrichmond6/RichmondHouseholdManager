@@ -21,7 +21,7 @@ namespace HouseholdManager.Controllers
         // GET: Task
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Tasks.Include(t => t.Room);
+            var applicationDbContext = _context.Tasks.Include(t => t.Room).Include(u => u.User);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -29,8 +29,8 @@ namespace HouseholdManager.Controllers
         // GET: Task/AddOrEdit
         public IActionResult AddOrEdit(int id = 0)
         {
-            ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name");
-            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserName");
+            PopulateRooms();
+            PopulateUsers();
             if (id == 0)
                 return View(new Models.Task());
             else
@@ -42,7 +42,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit([Bind("TaskId,TaskName,TaskIcon,RoomId,Points,UserId")] Models.Task task)
+        public async Task<IActionResult> AddOrEdit([Bind("TaskId,TaskName,TaskIcon,Instructions, Date, RoomId,Points,UserId")] Models.Task task)
         {
             if (ModelState.IsValid)
             {
@@ -53,8 +53,8 @@ namespace HouseholdManager.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", task.RoomId);
-            ViewData["RoomId"] = new SelectList(_context.Users, "UserId", "UserName", task.UserId);
+            PopulateRooms();
+            PopulateUsers();
             return View(task);
         }
 
@@ -79,5 +79,22 @@ namespace HouseholdManager.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [NonAction]
+        public void PopulateRooms()
+        {
+            var RoomCollection = _context.Rooms.ToList();
+            Room DefaultRoom = new Room() { RoomId = 0, Name = "Choose a room"};
+            RoomCollection.Insert(0,DefaultRoom);
+            ViewBag.Rooms = RoomCollection;
+        }
+
+        [NonAction]
+        public void PopulateUsers()
+        {
+            var UserCollection = _context.Users.ToList();
+            User DefaultUser = new User() { UserId = 0, UserName = "Choose a user" };
+            UserCollection.Insert(0, DefaultUser);
+            ViewBag.Users = UserCollection;
+        }
     }
 }

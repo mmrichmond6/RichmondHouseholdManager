@@ -7,33 +7,26 @@
 }
 
 <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-9">
         <ejs-grid id="tasks" dataSource="@Model" gridLines="None"
                   allowSorting="true" allowPaging="true">
             <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
             <e-grid-columns>
-                <e-grid-column headerText="Task Name:" field="TaskNameWithIcon"></e-grid-column>
-                <e-grid-column headerText="Points" template="#pointsColumnTemplate" width="100px">
-                </e-grid-column>
+                <e-grid-column headerText="Task Name" field="TaskNameWithIcon"></e-grid-column>
+                <e-grid-column headerText="User" field="UserNameWithIcon" width="150px" textAlign="Left"></e-grid-column>
+                <e-grid-column headerText="Room" field="RoomNameWithIcon" width="150px" textAlign="Left"></e-grid-column>
+                <e-grid-column headerText="Points" field="Points" width="150px" textAlign="Center"></e-grid-column>
                 <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="100px"></e-grid-column>
             </e-grid-columns>
         </ejs-grid>
 
     </div>
-    <div class="col-md-5">
+    <div class="col-md-2">
         <div class="widget h-100 d-flex justify-content-center align-items-center">
             <i class="fa-regular fa-user fa-2xl"></i>
         </div>
     </div>
 </div>
-
-<script id="pointsColumnTemplate" type="text/x-template">
-    ${if(Points=="5")}
-        <span class="badge bg-success">${Points}</span>
-    ${else}
-        <span class="badge bg-danger">${Points}</span>
-        ${/if}
-</script>
 
 <script id="actionColumnTemplate" type="text/x-template">
     <div class="d-flex flex-row justify-content-start">
