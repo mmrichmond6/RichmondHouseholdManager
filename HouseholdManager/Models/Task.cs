@@ -40,6 +40,9 @@ namespace HouseholdManager.Models
 
         public DateTime Date { get; set; } = DateTime.Now;
 
+        [Column(TypeName = "nvarchar(10)")]
+        public string Type { get; set; } = "ToDo";
+
         [NotMapped]
         public string? TaskNameWithIcon
         {

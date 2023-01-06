@@ -12,10 +12,11 @@
                   allowSorting="true" allowPaging="true">
             <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
             <e-grid-columns>
+                <e-grid-column headerText="Status" template="#typeColumnTemplate" width="100px" textAlign="Left"></e-grid-column>
                 <e-grid-column headerText="Task Name" field="TaskNameWithIcon"></e-grid-column>
                 <e-grid-column headerText="User" field="UserNameWithIcon" width="150px" textAlign="Left"></e-grid-column>
                 <e-grid-column headerText="Room" field="RoomNameWithIcon" width="150px" textAlign="Left"></e-grid-column>
-                <e-grid-column headerText="Points" field="Points" width="150px" textAlign="Center"></e-grid-column>
+                <e-grid-column headerText="Points" field="Points" width="100px" textAlign="Center"></e-grid-column>
                 <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="100px"></e-grid-column>
             </e-grid-columns>
         </ejs-grid>
@@ -27,6 +28,14 @@
         </div>
     </div>
 </div>
+
+<script id="typeColumnTemplate" type="text/x-template">
+    ${if(Type=="Done")}
+        <span class="badge bg-success">${Type}</span>
+    ${else}
+        <span class="badge bg-danger">${Type}</span>
+        ${/if}
+</script>
 
 <script id="actionColumnTemplate" type="text/x-template">
     <div class="d-flex flex-row justify-content-start">

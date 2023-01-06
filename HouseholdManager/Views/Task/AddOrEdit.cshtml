@@ -12,6 +12,14 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" name="TaskId" value="@Model.TaskId" />
                 <div class="mb-3">
+                    <div class='e-btn-group custom-rbt-group'>
+                    <input type="radio" id="radioleft" name="Type" value="ToDo" checked="@(Model.Type=="ToDo")" />
+                    <label class="e-btn" for="radioleft">ToDo</label>
+                    <input type="radio" id="radiomiddle" name="Type" value="Done" checked="@(Model.Type=="Done")" />
+                    <label class="e-btn" for="radiomiddle">Done</label>
+                </div>
+                </div>
+                <div class="mb-3">
                     <ejs-datepicker id="date" ejs-for="Date"
                     placeholder="Date" floatLabelType="Always"
                     format="MMM-dd-yy"></ejs-datepicker>
