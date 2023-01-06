@@ -21,7 +21,7 @@ namespace HouseholdManager.Controllers
         // GET: Task
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Tasks.Include(t => t.Room);
+            var applicationDbContext = _context.Tasks.Include(t => t.Room).Include(u => u.User);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -53,8 +53,8 @@ namespace HouseholdManager.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", task.RoomId);
-            ViewData["RoomId"] = new SelectList(_context.Users, "UserId", "UserName", task.UserId);
+            PopulateRooms();
+            PopulateUsers();
             return View(task);
         }
 

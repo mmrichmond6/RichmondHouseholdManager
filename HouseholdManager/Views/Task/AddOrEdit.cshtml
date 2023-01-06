@@ -18,31 +18,38 @@
                 </div>
                 <div class="mb-3">
                     <ejs-textbox id="taskName" placeholder="TaskName" ejs-for="TaskName" floatLabelType="Always"></ejs-textbox>
-                    <span asp-validation-for="TaskName" class="text-danger"></span>
+                    <span asp-validation-for="TaskName" class="text-danger" fs-6></span>
                 </div>
                 <div class="mb-3">
                     <ejs-textbox id="taskIcon" placeholder="TaskIcon" ejs-for="TaskIcon" floatLabelType="Always"></ejs-textbox>
-                    <span asp-validation-for="TaskIcon" class="text-danger"></span>
+                    <span asp-validation-for="TaskIcon" class="text-danger" fs-6></span>
                 </div>
                 <div class="mb-3">
                     <ejs-rating id="points" placeholder="Points" ejs-for="Points" floatLabelType="Always"></ejs-rating>
-                    <span asp-validation-for="Points" class="text-danger"></span>
+                    <span asp-validation-for="Points" class="text-danger" fs-6></span>
                 </div>
                 <div class="mb-3">
                     <ejs-textbox id="instructions" placeholder="Instructions" ejs-for="Instructions"
                     floatLabelType="Always" multiline="true"></ejs-textbox>
+                    <span asp-validation-for="Instructions" class="text-danger" fs-6></span>
                 </div>
                 <div class="mb-3">
                     <ejs-dropdownlist id="ddlRoom" ejs-for="RoomId"
-                    dataSource="@ViewBag.Rooms" placeholder="Room" floatLabelType="Always">
-                        <e-dropdownlist-fields value="RoomId" text="Name"></e-dropdownlist-fields>
+                        dataSource="@ViewBag.Rooms" placeholder="Room" 
+                        floatLabelType="Always" allowFiltering="true" ignoreAccent="true"
+                        filterType="Contains" popupHeight="220px">
+                        <e-dropdownlist-fields value="RoomId" text="RoomNameWithIcon"></e-dropdownlist-fields>
                     </ejs-dropdownlist>
+                    <span asp-validation-for="RoomId" class="text-danger" fs-6></span>
                 </div>
                 <div class="mb-3">
                     <ejs-dropdownlist id="ddlUser" ejs-for="UserId"
-                    dataSource="@ViewBag.Users" placeholder="User" floatLabelType="Always">
-                        <e-dropdownlist-fields value="UserId" text="UserName"></e-dropdownlist-fields>
+                        dataSource="@ViewBag.Users" placeholder="User"
+                        floatLabelType="Always" allowFiltering="true" ignoreAccent="true"
+                        filterType="Contains" popupHeight="220px">
+                        <e-dropdownlist-fields value="UserId" text="UserNameWithIcon"></e-dropdownlist-fields>
                     </ejs-dropdownlist>
+                    <span asp-validation-for="UserId" class="text-danger" fs-6></span>
                 </div>             
                 <ejs-button id="submit" type="submit" content="Submit" cssClass="e-success"></ejs-button>
         </form>
@@ -55,6 +62,6 @@
     </div>
 </div>
 
-@section Scripts {
+@*@section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+}*@

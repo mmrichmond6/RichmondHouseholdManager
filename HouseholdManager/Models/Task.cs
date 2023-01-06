@@ -48,5 +48,23 @@ namespace HouseholdManager.Models
                 return this.TaskIcon + " " + this.TaskName;
             }
         }
+
+        [NotMapped]
+        public string? RoomNameWithIcon
+        {
+            get
+            {
+                return Room == null ? "" : Room.Icon + " " + Room.Name;
+            }
+        }
+
+        [NotMapped]
+        public string? UserNameWithIcon
+        {
+            get
+            {
+                return User == null ? "" : User.UserIcon + " " + User.UserName;
+            }
+        }
     }
 }
