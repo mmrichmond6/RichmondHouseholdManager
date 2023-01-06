@@ -10101,11 +10101,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\My Drive\\LaunchCode\\LiftOff\\RHouseholdManager\\HouseholdManager\\HouseholdManager.csproj",
+      "projectUniqueName": "G:\\My Drive\\LaunchCode\\LiftOff\\MRHouseholdManager\\HouseholdManager\\HouseholdManager.csproj",
       "projectName": "HouseholdManager",
-      "projectPath": "G:\\My Drive\\LaunchCode\\LiftOff\\RHouseholdManager\\HouseholdManager\\HouseholdManager.csproj",
+      "projectPath": "G:\\My Drive\\LaunchCode\\LiftOff\\MRHouseholdManager\\HouseholdManager\\HouseholdManager.csproj",
       "packagesPath": "C:\\Users\\mmric\\.nuget\\packages\\",
-      "outputPath": "G:\\My Drive\\LaunchCode\\LiftOff\\RHouseholdManager\\HouseholdManager\\obj\\",
+      "outputPath": "G:\\My Drive\\LaunchCode\\LiftOff\\MRHouseholdManager\\HouseholdManager\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\mmric\\AppData\\Roaming\\NuGet\\NuGet.Config",

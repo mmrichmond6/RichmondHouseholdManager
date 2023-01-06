@@ -12,6 +12,11 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" name="TaskId" value="@Model.TaskId" />
                 <div class="mb-3">
+                    <ejs-datepicker id="date" ejs-for="Date"
+                    placeholder="Date" floatLabelType="Always"
+                    format="MMM-dd-yy"></ejs-datepicker>
+                </div>
+                <div class="mb-3">
                     <ejs-textbox id="taskName" placeholder="TaskName" ejs-for="TaskName" floatLabelType="Always"></ejs-textbox>
                     <span asp-validation-for="TaskName" class="text-danger"></span>
                 </div>
@@ -22,6 +27,10 @@
                 <div class="mb-3">
                     <ejs-rating id="points" placeholder="Points" ejs-for="Points" floatLabelType="Always"></ejs-rating>
                     <span asp-validation-for="Points" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-textbox id="instructions" placeholder="Instructions" ejs-for="Instructions"
+                    floatLabelType="Always" multiline="true"></ejs-textbox>
                 </div>
                 <div class="mb-3">
                     <label asp-for="RoomId" class="control-label"></label>
