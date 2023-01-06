@@ -30,6 +30,7 @@ namespace HouseholdManager.Controllers
         public IActionResult AddOrEdit(int id = 0)
         {
             ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name");
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserName");
             if (id == 0)
                 return View(new Models.Task());
             else

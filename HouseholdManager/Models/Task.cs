@@ -22,6 +22,12 @@ namespace HouseholdManager.Models
 
         public Room? Room { get; set; }
 
+        //UserId-Foreign Key
+        [Range(1, int.MaxValue, ErrorMessage = "Please select a room")]
+        public int UserId { get; set; }
+
+        public User? User { get; set; }
+
         [Range(1, 5, ErrorMessage = "Amount should be greater than zero and no more than five.")]
         public int Points { get; set; }
 

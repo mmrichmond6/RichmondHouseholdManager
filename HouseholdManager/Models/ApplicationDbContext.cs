@@ -12,7 +12,7 @@ namespace HouseholdManager.Models
 
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Task> Tasks { get; set; }
-        public DbSet<HouseholdManager.Models.User> User { get; set; }
+        public DbSet<User> Users { get; set; }
 
 
     }
