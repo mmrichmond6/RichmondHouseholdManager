@@ -23,7 +23,7 @@ namespace HouseholdManager.Models
         public Room? Room { get; set; }
 
         [Range(1, 5, ErrorMessage = "Amount should be greater than zero and no more than five.")]
-        public int Points { get; set; } = 5;
+        public int Points { get; set; }
 
         [NotMapped]
         public string? TaskNameWithIcon

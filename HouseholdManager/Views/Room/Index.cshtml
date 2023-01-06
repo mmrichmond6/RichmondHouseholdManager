@@ -12,8 +12,8 @@
                   allowSorting="true" allowPaging="true">
             <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
             <e-grid-columns>
-                <e-grid-column headerText="Room" field="TitleWithIcon"></e-grid-column>
-                <e-grid-column headerText="Type" template="#typeColumnTemplate" width="150px"></e-grid-column>
+                <e-grid-column headerText="Room" field="RoomNameWithIcon"></e-grid-column>
+
                 <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="100px"></e-grid-column>
             </e-grid-columns>
         </ejs-grid>
@@ -25,20 +25,13 @@
     </div>
 </div>
 
-<script id="typeColumnTemplate" type="text/x-template">
-    ${if(Type=="Income")}
-        <span class="badge bg-success">${Type}</span>
-    ${else}
-        <span class="badge bg-danger">${Type}</span>
-        ${/if}
-</script>
 
 <script id="actionColumnTemplate" type="text/x-template">
     <div class="d-flex flex-row justify-content-start">
-        <a class="btn btn-sm" href="/User/AddOrEdit/${UserId}">
+        <a class="btn btn-sm no-a-decoration" href="/Room/AddOrEdit/${RoomId}">
             <i class="fa-solid fa-pen fa-lg"></i>
         </a>
-        <form action="/User/Delete/${UserId}" method="post">
+        <form action="/Room/Delete/${RoomId}" method="post">
     @Html.AntiForgeryToken()
             <button type="submit" class="btn btn-sm btn-link no-a-decoration"
             onclick="return confirm(&quot;Are sure to delete this record?&quot;)">

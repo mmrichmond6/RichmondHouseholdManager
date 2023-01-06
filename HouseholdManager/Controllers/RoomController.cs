@@ -24,6 +24,16 @@ namespace HouseholdManager.Controllers
               return View(await _context.Rooms.ToListAsync());
         }
 
+        // GET: Room/AddOrEdit
+        public IActionResult AddOrEdit(int id = 0)
+        {
+           
+            if (id == 0)
+                return View(new Models.Room());
+            else
+                return View(_context.Rooms.Find(id));
+        }
+
         // POST: Room/AddOrEdit
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
