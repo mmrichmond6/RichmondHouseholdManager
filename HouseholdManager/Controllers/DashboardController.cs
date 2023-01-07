@@ -53,7 +53,7 @@ namespace HouseholdManager.Controllers
             ViewBag.RecentTasks = await _context.Tasks
                 .Include(t => t.Room).Include(u => u.User)
                 .OrderByDescending(j => j.Date)
-                .Take(5)
+                .Take(8)
                 .ToListAsync();
 
             return View();
