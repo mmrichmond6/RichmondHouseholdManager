@@ -1,13 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using HouseholdManager.Models;
+using Task = HouseholdManager.Models.Task;
 
-namespace HouseholdManager.Models
+namespace HouseholdManager.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions options):base(options)
+        public ApplicationDbContext(DbContextOptions options) : base(options)
         {
-                
+
         }
 
         public DbSet<Room> Rooms { get; set; }
