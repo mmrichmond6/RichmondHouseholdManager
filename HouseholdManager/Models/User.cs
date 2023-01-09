@@ -15,10 +15,10 @@ namespace HouseholdManager.Models
 
         [Column(TypeName = "nvarchar(5)")]
         [Required(ErrorMessage = "User type (Admin or User) is required.")]
-        public string Type { get; set; } = "User";
+        public string UserType { get; set; } = "User";
 
         [DataType(DataType.EmailAddress)]
-        public string? Email { get; set; } = "xxxxx@xxxx.com";
+        public string? UserEmail { get; set; } = "xxxxx@xxxx.com";
 
         [Column(TypeName = "nvarchar(5)")]
         public string UserIcon { get; set; } = "";

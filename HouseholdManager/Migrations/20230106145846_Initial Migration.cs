@@ -39,28 +39,28 @@ namespace HouseholdManager.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Tasks",
+                name: "Missions",
                 columns: table => new
                 {
-                    TaskId = table.Column<int>(type: "int", nullable: false)
+                    MissionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TaskName = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    TaskIcon = table.Column<string>(type: "nvarchar(5)", nullable: false),
+                    MissionName = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    MissionIcon = table.Column<string>(type: "nvarchar(5)", nullable: false),
                     RoomId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     Points = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tasks", x => x.TaskId);
+                    table.PrimaryKey("PK_Missions", x => x.MissionId);
                     table.ForeignKey(
-                        name: "FK_Tasks_Rooms_RoomId",
+                        name: "FK_Missions_Rooms_RoomId",
                         column: x => x.RoomId,
                         principalTable: "Rooms",
                         principalColumn: "RoomId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Tasks_Users_UserId",
+                        name: "FK_Missions_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
@@ -68,20 +68,20 @@ namespace HouseholdManager.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tasks_RoomId",
-                table: "Tasks",
+                name: "IX_Missions_RoomId",
+                table: "Missions",
                 column: "RoomId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tasks_UserId",
-                table: "Tasks",
+                name: "IX_Missions_UserId",
+                table: "Missions",
                 column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Tasks");
+                name: "Missions");
 
             migrationBuilder.DropTable(
                 name: "Rooms");

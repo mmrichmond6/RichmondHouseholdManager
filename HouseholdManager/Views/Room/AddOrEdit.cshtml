@@ -12,12 +12,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" name="RoomId" value="@Model.RoomId" />
                 <div class="mb-3">
-                    <ejs-textbox id="name" placeholder="Name" ejs-for="Name" floatLabelType="Always"></ejs-textbox>
-                    <span asp-validation-for="Name" class="text-danger" fs-6></span>
+                    <ejs-textbox id="roomname" placeholder="RoomName" ejs-for="RoomName" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="RoomName" class="text-danger" fs-6></span>
                 </div>
                 <div class="mb-3">
-                    <ejs-textbox id="icon" placeholder="Icon" ejs-for="Icon" floatLabelType="Always"></ejs-textbox>
-                    <span asp-validation-for="Icon" class="text-danger" fs-6></span>
+                    <ejs-textbox id="roomicon" placeholder="RoomIcon" ejs-for="RoomIcon" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="RoomIcon" class="text-danger" fs-6></span>
                 </div>
                 <ejs-button id="submit" type="submit" content="Submit" cssClass="e-success"></ejs-button>
             </form>

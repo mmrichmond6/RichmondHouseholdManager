@@ -1,19 +1,19 @@
-﻿@model IEnumerable<HouseholdManager.Models.Task>
+﻿@model IEnumerable<HouseholdManager.Models.Mission>
 
 @{
-    ViewData["PageTitle"] = "Tasks";
-    ViewData["PageActionText"] = "+ New Task";
-    ViewData["PageActionUrl"] = "/Task/AddOrEdit";
+    ViewData["PageTitle"] = "Missions";
+    ViewData["PageActionText"] = "+ New Mission";
+    ViewData["PageActionUrl"] = "/Mission/AddOrEdit";
 }
 
 <div class="row">
     <div class="col-md-9">
-        <ejs-grid id="tasks" dataSource="@Model" gridLines="None"
+        <ejs-grid id="missions" dataSource="@Model" gridLines="None"
                   allowSorting="true" allowPaging="true">
             <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
             <e-grid-columns>
                 <e-grid-column headerText="Status" template="#typeColumnTemplate" width="100px" textAlign="Left"></e-grid-column>
-                <e-grid-column headerText="Task Name" field="TaskNameWithIcon"></e-grid-column>
+                <e-grid-column headerText="Mission Name" field="MissionNameWithIcon"></e-grid-column>
                 <e-grid-column headerText="User" field="UserNameWithIcon" width="150px" textAlign="Left"></e-grid-column>
                 <e-grid-column headerText="Room" field="RoomNameWithIcon" width="150px" textAlign="Left"></e-grid-column>
                 <e-grid-column headerText="Points" field="Points" width="100px" textAlign="Center"></e-grid-column>
@@ -39,10 +39,10 @@
 
 <script id="actionColumnTemplate" type="text/x-template">
     <div class="d-flex flex-row justify-content-start">
-        <a class="btn btn-sm no-a-decoration" href="/Task/AddOrEdit/${TaskId}">
+        <a class="btn btn-sm no-a-decoration" href="/Mission/AddOrEdit/${MissionId}">
             <i class="fa-solid fa-pen fa-lg"></i>
         </a>
-        <form action="/Task/Delete/${TaskId}" method="post">
+        <form action="/Mission/Delete/${MissionId}" method="post">
     @Html.AntiForgeryToken()
             <button type="submit" class="btn btn-sm btn-link no-a-decoration"
             onclick="return confirm(&quot;Are sure to delete this record?&quot;)">

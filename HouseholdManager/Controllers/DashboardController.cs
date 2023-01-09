@@ -19,40 +19,40 @@ namespace HouseholdManager.Controllers
             DateTime StartDate = DateTime.Today.AddDays(-6);
             DateTime EndDate = DateTime.Today;
 
-            List<Models.Task> allTasks = await _context.Tasks
-                .Where(y => y.Date >= StartDate && y.Date <= EndDate)
+            List<Models.Mission> allMissions = await _context.Missions
+                .Where(y => y.MissionDate >= StartDate && y.MissionDate <= EndDate)
                 .ToListAsync();
-            int CountAll = allTasks.Count();
+            int CountAll = allMissions.Count();
 
-            List<Models.Task> SelectedTasksToDo = await _context.Tasks
+            List<Models.Mission> SelectedMissionsToDo = await _context.Missions
                 .Include(t => t.Room).Include(u => u.User)
-                .Where(y => y.Date>= StartDate && y.Date<= EndDate && y.Type == "ToDo")
+                .Where(y => y.MissionDate>= StartDate && y.MissionDate<= EndDate && y.MissionStatus == "ToDo")
                 .ToListAsync();
-            ViewBag.SelectedTasksToDo = SelectedTasksToDo;
-            int CountToDo = SelectedTasksToDo.Count();
+            ViewBag.SelectedMissionsToDo = SelectedMissionsToDo;
+            int CountToDo = SelectedMissionsToDo.Count();
 
-            List<Models.Task> SelectedTasksDone = await _context.Tasks
+            List<Models.Mission> SelectedMissionsDone = await _context.Missions
                 .Include(t => t.Room).Include(u => u.User)
-                .Where(y => y.Date >= StartDate && y.Date <= EndDate && y.Type == "Done")
+                .Where(y => y.MissionDate >= StartDate && y.MissionDate <= EndDate && y.MissionStatus == "Done")
                 .ToListAsync();
-            ViewBag.SelectedTasksDone = SelectedTasksDone;
-            int CountDone = SelectedTasksDone.Count();
+            ViewBag.SelectedMissionsDone = SelectedMissionsDone;
+            int CountDone = SelectedMissionsDone.Count();
 
-            //Doughnut Chart-Tasks done by User
-            ViewBag.DoughnutChartData = SelectedTasksDone
+            //Doughnut Chart-Missions done by User
+            ViewBag.DoughnutChartData = SelectedMissionsDone
                 .GroupBy(j => j.User.UserId)
                 .Select(k => new
                 {
                     userNameWithIcon = k.First().User.UserNameWithIcon + " " + k.First().User.UserName,
-                    amount = k.Sum(j => j.Points),
-                    formattedAmount = k.Sum(j => j.Points).ToString("0"),
+                    amount = k.Sum(j => j.MissionPoints),
+                    formattedAmount = k.Sum(j => j.MissionPoints).ToString("0"),
                 })
                 .ToList();
 
-            //Recent tasks
-            ViewBag.RecentTasks = await _context.Tasks
+            //Recent missions
+            ViewBag.RecentMissions = await _context.Missions
                 .Include(t => t.Room).Include(u => u.User)
-                .OrderByDescending(j => j.Date)
+                .OrderByDescending(j => j.MissionDate)
                 .Take(8)
                 .ToListAsync();
 

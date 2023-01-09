@@ -3,22 +3,21 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
 using HouseholdManager.Models;
 
 namespace HouseholdManager.Models
 {
-    public class Task
+    public class Mission
     {
         [Key]
-        public int TaskId { get; set; }
+        public int MissionId { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
-        [Required(ErrorMessage = "Name of task is required.")]
-        public string TaskName { get; set; }
+        [Required(ErrorMessage = "Name of mission is required.")]
+        public string MissionName { get; set; }
 
         [Column(TypeName = "nvarchar(5)")]
-        public string TaskIcon { get; set; } = "";
+        public string MissionIcon { get; set; } = "";
 
         //RoomId-Foreign Key
         [Range(1, int.MaxValue, ErrorMessage = "Please select a room")]
@@ -33,22 +32,22 @@ namespace HouseholdManager.Models
         public User? User { get; set; }
 
         [Range(1, 5, ErrorMessage = "Amount should be greater than zero and no more than five.")]
-        public int Points { get; set; }
+        public int MissionPoints { get; set; }
 
         [Column(TypeName = "nvarchar(75)")]
-        public string? Instructions { get; set; }
+        public string? MissionInstructions { get; set; }
 
-        public DateTime Date { get; set; } = DateTime.Now;
+        public DateTime MissionDate { get; set; } = DateTime.Now;
 
         [Column(TypeName = "nvarchar(10)")]
-        public string Type { get; set; } = "ToDo";
+        public string MissionStatus { get; set; } = "ToDo";
 
         [NotMapped]
-        public string? TaskNameWithIcon
+        public string? MissionNameWithIcon
         {
             get
             {
-                return this.TaskIcon + " " + this.TaskName;
+                return this.MissionIcon + " " + this.MissionName;
             }
         }
 
@@ -57,7 +56,7 @@ namespace HouseholdManager.Models
         {
             get
             {
-                return Room == null ? "" : Room.Icon + " " + Room.Name;
+                return Room == null ? "" : Room.RoomIcon + " " + Room.RoomName;
             }
         }
 

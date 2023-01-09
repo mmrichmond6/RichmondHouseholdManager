@@ -22,6 +22,50 @@ namespace HouseholdManager.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("HouseholdManager.Models.Mission", b =>
+                {
+                    b.Property<int>("MissionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MissionId"), 1L, 1);
+
+                    b.Property<DateTime>("MissionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MissionIcon")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(5)");
+
+                    b.Property<string>("MissionInstructions")
+                        .HasColumnType("nvarchar(75)");
+
+                    b.Property<string>("MissionName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("MissionPoints")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MissionStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("MissionId");
+
+                    b.HasIndex("RoomId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Missions");
+                });
+
             modelBuilder.Entity("HouseholdManager.Models.Room", b =>
                 {
                     b.Property<int>("RoomId")
@@ -30,61 +74,17 @@ namespace HouseholdManager.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoomId"), 1L, 1);
 
-                    b.Property<string>("Icon")
+                    b.Property<string>("RoomIcon")
                         .IsRequired()
                         .HasColumnType("nvarchar(5)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("RoomName")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("RoomId");
 
                     b.ToTable("Rooms");
-                });
-
-            modelBuilder.Entity("HouseholdManager.Models.Task", b =>
-                {
-                    b.Property<int>("TaskId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TaskId"), 1L, 1);
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Instructions")
-                        .HasColumnType("nvarchar(75)");
-
-                    b.Property<int>("Points")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RoomId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TaskIcon")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(5)");
-
-                    b.Property<string>("TaskName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("TaskId");
-
-                    b.HasIndex("RoomId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Tasks");
                 });
 
             modelBuilder.Entity("HouseholdManager.Models.User", b =>
@@ -95,12 +95,8 @@ namespace HouseholdManager.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
 
-                    b.Property<string>("Email")
+                    b.Property<string>("UserEmail")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(5)");
 
                     b.Property<string>("UserIcon")
                         .IsRequired()
@@ -110,12 +106,16 @@ namespace HouseholdManager.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<string>("UserType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(5)");
+
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("HouseholdManager.Models.Task", b =>
+            modelBuilder.Entity("HouseholdManager.Models.Mission", b =>
                 {
                     b.HasOne("HouseholdManager.Models.Room", "Room")
                         .WithMany()

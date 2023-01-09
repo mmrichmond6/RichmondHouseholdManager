@@ -4,13 +4,13 @@
 
 namespace HouseholdManager.Migrations
 {
-    public partial class TaskToDo : Migration
+    public partial class MissionToDo : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
                 name: "Type",
-                table: "Tasks",
+                table: "Missions",
                 type: "nvarchar(10)",
                 nullable: false,
                 defaultValue: "");
@@ -20,7 +20,7 @@ namespace HouseholdManager.Migrations
         {
             migrationBuilder.DropColumn(
                 name: "Type",
-                table: "Tasks");
+                table: "Missions");
         }
     }
 }

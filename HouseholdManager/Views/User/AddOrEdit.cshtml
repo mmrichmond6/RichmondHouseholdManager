@@ -13,9 +13,9 @@
                 <input type="hidden" name="UserId" value="@Model.UserId" />
                 <div class="mb-3">
                     <div class='e-btn-group custom-rbt-group'>
-                        <input type="radio" id="radioleft" name="Type" value="Admin" checked="@(Model.Type=="Admin")" />
+                        <input type="radio" id="radioleft" name="Type" value="Admin" checked="@(Model.UserType=="Admin")" />
                         <label class="e-btn" for="radioleft">Admin</label>
-                        <input type="radio" id="radiomiddle" name="Type" value="User" checked="@(Model.Type=="User")" />
+                        <input type="radio" id="radiomiddle" name="Type" value="User" checked="@(Model.UserType=="User")" />
                         <label class="e-btn" for="radiomiddle">User</label>
                     </div>
                 </div>
@@ -28,8 +28,8 @@
                     <span asp-validation-for="UserIcon" class="text-danger" fs-6></span>
                 </div>
                 <div class="mb-3">
-                    <ejs-textbox id="email" placeholder="Email" ejs-for="Email" floatLabelType="Always"></ejs-textbox>
-                    <span asp-validation-for="Email" class="text-danger" fs-6></span>
+                    <ejs-textbox id="userEmail" placeholder="UserEmail" ejs-for="UserEmail" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="UserEmail" class="text-danger" fs-6></span>
                 </div>
                 <ejs-button id="submit" type="submit" content="Submit" cssClass="e-success"></ejs-button>
             </form>

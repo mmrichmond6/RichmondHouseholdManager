@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HouseholdManager.Migrations
 {
-    public partial class TaskModifications : Migration
+    public partial class MissionModifications : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -19,14 +19,14 @@ namespace HouseholdManager.Migrations
 
             migrationBuilder.AddColumn<DateTime>(
                 name: "Date",
-                table: "Tasks",
+                table: "Missions",
                 type: "datetime2",
                 nullable: false,
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
             migrationBuilder.AddColumn<string>(
                 name: "Instructions",
-                table: "Tasks",
+                table: "Missions",
                 type: "nvarchar(75)",
                 nullable: true);
         }
@@ -35,11 +35,11 @@ namespace HouseholdManager.Migrations
         {
             migrationBuilder.DropColumn(
                 name: "Date",
-                table: "Tasks");
+                table: "Missions");
 
             migrationBuilder.DropColumn(
                 name: "Instructions",
-                table: "Tasks");
+                table: "Missions");
 
             migrationBuilder.AlterColumn<string>(
                 name: "Email",

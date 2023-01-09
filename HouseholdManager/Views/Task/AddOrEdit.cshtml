@@ -1,7 +1,7 @@
-﻿@model HouseholdManager.Models.Task
+﻿@model HouseholdManager.Models.Mission
 
 @{
-    ViewData["PageTitle"] = Model.TaskId == 0 ? "Create a new task" : "Edit task";
+    ViewData["PageTitle"] = Model.MissionId == 0 ? "Create a new mission" : "Edit mission";
 }
 
 
@@ -10,36 +10,36 @@
         <div class="widget p-5" style="background-color: #1a222b">
             <form asp-action="AddOrEdit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" name="TaskId" value="@Model.TaskId" />
+                <input type="hidden" name="MissionId" value="@Model.MissionId" />
                 <div class="mb-3">
                     <div class='e-btn-group custom-rbt-group'>
-                    <input type="radio" id="radioleft" name="Type" value="ToDo" checked="@(Model.Type=="ToDo")" />
+                    <input type="radio" id="radioleft" name="Type" value="ToDo" checked="@(Model.MissionStatus=="ToDo")" />
                     <label class="e-btn" for="radioleft">ToDo</label>
-                    <input type="radio" id="radiomiddle" name="Type" value="Done" checked="@(Model.Type=="Done")" />
+                    <input type="radio" id="radiomiddle" name="Type" value="Done" checked="@(Model.MissionStatus=="Done")" />
                     <label class="e-btn" for="radiomiddle">Done</label>
                 </div>
                 </div>
                 <div class="mb-3">
-                    <ejs-datepicker id="date" ejs-for="Date"
+                    <ejs-datepicker id="missiondate" ejs-for="MissionDate"
                     placeholder="Date" floatLabelType="Always"
                     format="MMM-dd-yy"></ejs-datepicker>
                 </div>
                 <div class="mb-3">
-                    <ejs-textbox id="taskName" placeholder="TaskName" ejs-for="TaskName" floatLabelType="Always"></ejs-textbox>
-                    <span asp-validation-for="TaskName" class="text-danger" fs-6></span>
+                    <ejs-textbox id="missionName" placeholder="MissionName" ejs-for="MissionName" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="MissionName" class="text-danger" fs-6></span>
                 </div>
                 <div class="mb-3">
-                    <ejs-textbox id="taskIcon" placeholder="TaskIcon" ejs-for="TaskIcon" floatLabelType="Always"></ejs-textbox>
-                    <span asp-validation-for="TaskIcon" class="text-danger" fs-6></span>
+                    <ejs-textbox id="missionIcon" placeholder="MissionIcon" ejs-for="MissionIcon" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="MissionIcon" class="text-danger" fs-6></span>
                 </div>
                 <div class="mb-3">
-                    <ejs-rating id="points" placeholder="Points" ejs-for="Points" floatLabelType="Always"></ejs-rating>
-                    <span asp-validation-for="Points" class="text-danger" fs-6></span>
+                    <ejs-rating id="missionpoints" placeholder="MissionPoints" ejs-for="MissionPoints" floatLabelType="Always"></ejs-rating>
+                    <span asp-validation-for="MissionPoints" class="text-danger" fs-6></span>
                 </div>
                 <div class="mb-3">
-                    <ejs-textbox id="instructions" placeholder="Instructions" ejs-for="Instructions"
+                    <ejs-textbox id="missioninstructions" placeholder="MissionInstructions" ejs-for="MissionInstructions"
                     floatLabelType="Always" multiline="true"></ejs-textbox>
-                    <span asp-validation-for="Instructions" class="text-danger" fs-6></span>
+                    <span asp-validation-for="MissionInstructions" class="text-danger" fs-6></span>
                 </div>
                 <div class="mb-3">
                     <ejs-dropdownlist id="ddlRoom" ejs-for="RoomId"

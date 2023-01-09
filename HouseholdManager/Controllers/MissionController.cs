@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,70 +9,70 @@ using HouseholdManager.Data;
 
 namespace HouseholdManager.Controllers
 {
-    public class TaskController : Controller
+    public class MissionController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public TaskController(ApplicationDbContext context)
+        public MissionController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Task
+        // GET: Mission
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Tasks.Include(t => t.Room).Include(u => u.User);
+            var applicationDbContext = _context.Missions.Include(t => t.Room).Include(u => u.User);
             return View(await applicationDbContext.ToListAsync());
         }
 
 
-        // GET: Task/AddOrEdit
+        // GET: Mission/AddOrEdit
         public IActionResult AddOrEdit(int id = 0)
         {
             PopulateRooms();
             PopulateUsers();
             if (id == 0)
-                return View(new Models.Task());
+                return View(new Models.Mission());
             else
-                return View(_context.Tasks.Find(id));
+                return View(_context.Missions.Find(id));
         }
 
-        // POST: Task/AddOrEdit
+        // POST: Mission/AddOrEdit
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit([Bind("TaskId,TaskName,TaskIcon,Instructions, Date, RoomId,Points,UserId, Type")] Models.Task task)
+        public async Task<IActionResult> AddOrEdit([Bind("MissionId,MissionName,MissionIcon,MissionInstructions,MissionDate,RoomId,MissionPoints,UserId,MissionStatus")] Models.Mission mission)
         {
             if (ModelState.IsValid)
             {
-                if (task.TaskId == 0)
-                    _context.Add(task);
+                if (mission.MissionId == 0)
+                    _context.Add(mission);
                 else
-                    _context.Update(task);
+                    _context.Update(mission);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "Dashboard");
             }
             PopulateRooms();
             PopulateUsers();
-            return View(task);
+            return View(mission);
         }
 
 
 
-        // POST: Task/Delete/5
+        // POST: Mission/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Tasks == null)
+            if (_context.Missions == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Tasks'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Missions'  is null.");
             }
-            var task = await _context.Tasks.FindAsync(id);
-            if (task != null)
+            var mission = await _context.Missions.FindAsync(id);
+            if (mission != null)
             {
-                _context.Tasks.Remove(task);
+                _context.Missions.Remove(mission);
             }
             
             await _context.SaveChangesAsync();
@@ -84,7 +83,7 @@ namespace HouseholdManager.Controllers
         public void PopulateRooms()
         {
             var RoomCollection = _context.Rooms.ToList();
-            Room DefaultRoom = new Room() { RoomId = 0, Name = "Choose a room"};
+            Room DefaultRoom = new Room() { RoomId = 0, RoomName = "Choose a room"};
             RoomCollection.Insert(0,DefaultRoom);
             ViewBag.Rooms = RoomCollection;
         }
