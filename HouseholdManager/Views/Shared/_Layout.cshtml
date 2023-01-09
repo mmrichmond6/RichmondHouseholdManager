@@ -17,8 +17,6 @@
 </head>
 <body class="e-bigger">
 
-    <partial name="_Sidebar" />
-
     <nav class="navbar sticky-top">
         <div class="container-fluid py-2 px-4">
             <i class="fa-solid fa-magnifying-glass"></i>
@@ -32,6 +30,8 @@
 
     <div class="main=content">
         <div class="container mt-5">
+            <ejs-breadcrumb id="breadcrumb"
+                            separatorTemplate="@Html.Raw("<span class='fa-solid fa-angle-right'></span>")"></ejs-breadcrumb>
             <div class="row justify-content-center">
                 <div class="@(ViewData["isDashboard"] == null?"col-md-10":"col-md-12")">
                     <main role="main" class="pb-3">
@@ -52,9 +52,7 @@
                                                 </a>
                                             }
                                         </div>
-                                    </div>
-                                    <ejs-breadcrumb id="breadcrumb"
-                                                    separatorTemplate="@Html.Raw("<span class='fa-solid fa-angle-right'></span>")"></ejs-breadcrumb>
+                                    </div>                                   
                                 </div>
                             </div>
                         </div>
