@@ -19,22 +19,20 @@
 
     <nav class="navbar sticky-top">
         <div class="container-fluid py-2 px-4">
+            <partial name="_LoginPartial" />
             <i class="fa-solid fa-magnifying-glass"></i>
             <div>
                 <i class="fa-solid fa-bell"></i>
                 <i class="fa-solid fa-message"></i>
                 <img class="profile-pic" src="~/profile.jpg" />
             </div>
-            <partial name="_LoginPartial" />
         </div>
         <ejs-breadcrumb id="breadcrumb"
            separatorTemplate="@Html.Raw("<span class='fa-solid fa-angle-right'></span>")"></ejs-breadcrumb>
     </nav>
-
     <div class="main=content">
         <div class="container mt-5">
             <partial name="_Sidebar" />
-
             <div class="row justify-content-center">
                 <div class="@(ViewData["isDashboard"] == null?"col-md-10":"col-md-12")">
                     <main role="main" class="pb-3">
