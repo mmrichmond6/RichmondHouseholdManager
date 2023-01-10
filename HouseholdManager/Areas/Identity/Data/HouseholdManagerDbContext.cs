@@ -11,6 +11,8 @@ public class HouseholdManagerDbContext : IdentityDbContext<IdentityUser>
     public DbSet<Mission> Missions { get; set; }
     public DbSet<Contributor> Contributors { get; set; }
 
+    public DbSet<Household> Households { get; set; }
+
     public HouseholdManagerDbContext(DbContextOptions<HouseholdManagerDbContext> options)
         : base(options)
     {
@@ -23,4 +25,6 @@ public class HouseholdManagerDbContext : IdentityDbContext<IdentityUser>
         // For example, you can rename the ASP.NET Identity table names and more.
         // Add your customizations after calling base.OnModelCreating(builder);
     }
+
+    public DbSet<HouseholdManager.Models.Household> Household { get; set; }
 }
