@@ -1,44 +1,44 @@
-﻿@model IEnumerable<HouseholdManager.Models.User>
+﻿@model IEnumerable<HouseholdManager.Models.Contributor>
 
 @{
-    ViewData["PageTitle"] = "Users";
-    ViewData["PageActionText"] = "+ New User";
-    ViewData["PageActionUrl"] = "/User/AddOrEdit";
+    ViewData["PageTitle"] = "Contributors";
+    ViewData["PageActionText"] = "+ New Contributor";
+    ViewData["PageActionUrl"] = "/Contributor/AddOrEdit";
 }
 
 <div class="row">
     <div class="col-md-7">
-        <ejs-grid id="users" dataSource="@Model" gridLines="None"
+        <ejs-grid id="contributors" dataSource="@Model" gridLines="None"
                   allowSorting="true" allowPaging="true">
             <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
             <e-grid-columns>
-                <e-grid-column headerText="UserName" field="UserNameWithIcon"></e-grid-column>
-                <e-grid-column headerText="UserType" template="#typeColumnTemplate" width="150px"></e-grid-column>
+                <e-grid-column headerText="ContributorName" field="ContributorNameWithIcon"></e-grid-column>
+                <e-grid-column headerText="ContributorType" template="#typeColumnTemplate" width="150px"></e-grid-column>
                 <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="100px"></e-grid-column>
             </e-grid-columns>
         </ejs-grid>
     </div>
     <div class="col-md-5">
         <div class="widget h-100 d-flex justify-content-center align-items-center">
-            <i class="fa-regular fa-user fa-2xl"></i>
+            <i class="fa-regular fa-contributor fa-2xl"></i>
         </div>
     </div>
 </div>
 
 <script id="typeColumnTemplate" type="text/x-template">
-    ${if(UserType=="User")}
-        <span class="badge bg-success">${UserType}</span>
+    ${if(ContributorType=="Contributor")}
+        <span class="badge bg-success">${ContributorType}</span>
     ${else}
-        <span class="badge bg-danger">${UserType}</span>
+        <span class="badge bg-danger">${ContributorType}</span>
         ${/if}
 </script>
 
 <script id="actionColumnTemplate" type="text/x-template">
     <div class="d-flex flex-row justify-content-start">
-        <a class="btn btn-sm no-a-decoration" href="/User/AddOrEdit/${UserId}">
+        <a class="btn btn-sm no-a-decoration" href="/Contributor/AddOrEdit/${ContributorId}">
             <i class="fa-solid fa-pen fa-lg"></i>
         </a>
-        <form action="/User/Delete/${UserId}" method="post">
+        <form action="/Contributor/Delete/${ContributorId}" method="post">
             @Html.AntiForgeryToken()
             <button type="submit" class="btn btn-sm btn-link no-a-decoration"
             onclick="return confirm(&quot;Are sure to delete this record?&quot;)">

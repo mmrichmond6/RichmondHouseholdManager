@@ -25,11 +25,11 @@ namespace HouseholdManager.Models
 
         public Room? Room { get; set; }
 
-        //UserId-Foreign Key
+        //ContributorId-Foreign Key
         [Range(1, int.MaxValue, ErrorMessage = "Please select a room")]
-        public int UserId { get; set; }
+        public int ContributorId { get; set; }
 
-        public User? User { get; set; }
+        public Contributor? Contributor { get; set; }
 
         [Range(1, 5, ErrorMessage = "Amount should be greater than zero and no more than five.")]
         public int MissionPoints { get; set; }
@@ -61,11 +61,11 @@ namespace HouseholdManager.Models
         }
 
         [NotMapped]
-        public string? UserNameWithIcon
+        public string? ContributorNameWithIcon
         {
             get
             {
-                return User == null ? "" : User.UserIcon + " " + User.UserName;
+                return Contributor == null ? "" : Contributor.ContributorIcon + " " + Contributor.ContributorName;
             }
         }
     }

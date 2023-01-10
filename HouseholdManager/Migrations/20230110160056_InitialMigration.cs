@@ -10,6 +10,22 @@ namespace HouseholdManager.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Contributors",
+                columns: table => new
+                {
+                    ContributorId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ContributorName = table.Column<string>(type: "nvarchar(20)", nullable: false),
+                    ContributorType = table.Column<string>(type: "nvarchar(12)", nullable: false),
+                    ContributorEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ContributorIcon = table.Column<string>(type: "nvarchar(5)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Contributors", x => x.ContributorId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Rooms",
                 columns: table => new
                 {
@@ -24,22 +40,6 @@ namespace HouseholdManager.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    UserId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserName = table.Column<string>(type: "nvarchar(20)", nullable: false),
-                    UserType = table.Column<string>(type: "nvarchar(5)", nullable: false),
-                    UserEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserIcon = table.Column<string>(type: "nvarchar(5)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.UserId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Missions",
                 columns: table => new
                 {
@@ -48,7 +48,7 @@ namespace HouseholdManager.Migrations
                     MissionName = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     MissionIcon = table.Column<string>(type: "nvarchar(5)", nullable: false),
                     RoomId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
+                    ContributorId = table.Column<int>(type: "int", nullable: false),
                     MissionPoints = table.Column<int>(type: "int", nullable: false),
                     MissionInstructions = table.Column<string>(type: "nvarchar(75)", nullable: true),
                     MissionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -58,28 +58,28 @@ namespace HouseholdManager.Migrations
                 {
                     table.PrimaryKey("PK_Missions", x => x.MissionId);
                     table.ForeignKey(
+                        name: "FK_Missions_Contributors_ContributorId",
+                        column: x => x.ContributorId,
+                        principalTable: "Contributors",
+                        principalColumn: "ContributorId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Missions_Rooms_RoomId",
                         column: x => x.RoomId,
                         principalTable: "Rooms",
                         principalColumn: "RoomId",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Missions_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Missions_ContributorId",
+                table: "Missions",
+                column: "ContributorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Missions_RoomId",
                 table: "Missions",
                 column: "RoomId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Missions_UserId",
-                table: "Missions",
-                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -88,10 +88,10 @@ namespace HouseholdManager.Migrations
                 name: "Missions");
 
             migrationBuilder.DropTable(
-                name: "Rooms");
+                name: "Contributors");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Rooms");
         }
     }
 }

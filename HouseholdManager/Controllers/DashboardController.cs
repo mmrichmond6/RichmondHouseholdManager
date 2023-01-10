@@ -25,25 +25,25 @@ namespace HouseholdManager.Controllers
             int CountAll = allMissions.Count();
 
             List<Models.Mission> SelectedMissionsToDo = await _context.Missions
-                .Include(t => t.Room).Include(u => u.User)
+                .Include(t => t.Room).Include(u => u.Contributor)
                 .Where(y => y.MissionDate>= StartDate && y.MissionDate<= EndDate && y.MissionStatus == "ToDo")
                 .ToListAsync();
             ViewBag.SelectedMissionsToDo = SelectedMissionsToDo;
             int CountToDo = SelectedMissionsToDo.Count();
 
             List<Models.Mission> SelectedMissionsDone = await _context.Missions
-                .Include(t => t.Room).Include(u => u.User)
+                .Include(t => t.Room).Include(u => u.Contributor)
                 .Where(y => y.MissionDate >= StartDate && y.MissionDate <= EndDate && y.MissionStatus == "Done")
                 .ToListAsync();
             ViewBag.SelectedMissionsDone = SelectedMissionsDone;
             int CountDone = SelectedMissionsDone.Count();
 
-            //Doughnut Chart-Missions done by User
+            //Doughnut Chart-Missions done by Contributor
             ViewBag.DoughnutChartData = SelectedMissionsDone
-                .GroupBy(j => j.User.UserId)
+                .GroupBy(j => j.Contributor.ContributorId)
                 .Select(k => new
                 {
-                    userNameWithIcon = k.First().User.UserNameWithIcon + " " + k.First().User.UserName,
+                    contributorNameWithIcon = k.First().Contributor.ContributorNameWithIcon + " " + k.First().Contributor.ContributorName,
                     amount = k.Sum(j => j.MissionPoints),
                     formattedAmount = k.Sum(j => j.MissionPoints).ToString("0"),
                 })
@@ -51,7 +51,7 @@ namespace HouseholdManager.Controllers
 
             //Recent missions
             ViewBag.RecentMissions = await _context.Missions
-                .Include(t => t.Room).Include(u => u.User)
+                .Include(t => t.Room).Include(u => u.Contributor)
                 .OrderByDescending(j => j.MissionDate)
                 .Take(8)
                 .ToListAsync();

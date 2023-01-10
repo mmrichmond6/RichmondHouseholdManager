@@ -21,7 +21,7 @@ namespace HouseholdManager.Controllers
         // GET: Mission
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Missions.Include(t => t.Room).Include(u => u.User);
+            var applicationDbContext = _context.Missions.Include(t => t.Room).Include(u => u.Contributor);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -30,7 +30,7 @@ namespace HouseholdManager.Controllers
         public IActionResult AddOrEdit(int id = 0)
         {
             PopulateRooms();
-            PopulateUsers();
+            PopulateContributors();
             if (id == 0)
                 return View(new Models.Mission());
             else
@@ -42,7 +42,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit([Bind("MissionId,MissionName,MissionIcon,MissionInstructions,MissionDate,RoomId,MissionPoints,UserId,MissionStatus")] Models.Mission mission)
+        public async Task<IActionResult> AddOrEdit([Bind("MissionId,MissionName,MissionIcon,MissionInstructions,MissionDate,RoomId,MissionPoints,ContributorId,MissionStatus")] Models.Mission mission)
         {
             if (ModelState.IsValid)
             {
@@ -54,7 +54,7 @@ namespace HouseholdManager.Controllers
                 return RedirectToAction("Index", "Dashboard");
             }
             PopulateRooms();
-            PopulateUsers();
+            PopulateContributors();
             return View(mission);
         }
 
@@ -89,12 +89,12 @@ namespace HouseholdManager.Controllers
         }
 
         [NonAction]
-        public void PopulateUsers()
+        public void PopulateContributors()
         {
-            var UserCollection = _context.Users.ToList();
-            User DefaultUser = new User() { UserId = 0, UserName = "Choose a user" };
-            UserCollection.Insert(0, DefaultUser);
-            ViewBag.Users = UserCollection;
+            var ContributorCollection = _context.Contributors.ToList();
+            Contributor DefaultContributor = new Contributor() { ContributorId = 0, ContributorName = "Choose a contributor" };
+            ContributorCollection.Insert(0, DefaultContributor);
+            ViewBag.Contributors = ContributorCollection;
         }
     }
 }

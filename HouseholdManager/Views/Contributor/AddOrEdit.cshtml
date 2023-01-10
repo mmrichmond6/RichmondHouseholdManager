@@ -1,0 +1,49 @@
+﻿@model HouseholdManager.Models.Contributor
+
+@{
+    ViewData["PageTitle"] = Model.ContributorId == 0 ? "Create a new contributor" : "Edit contributor";
+}
+
+
+<<div class="row">
+    <div class="col-md-7">
+        <div class="widget p-5" style="background-color: #1a222b">
+            <form asp-action="AddOrEdit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" name="ContributorId" value="@Model.ContributorId" />
+                <div class="mb-3">
+                    <div class='e-btn-group custom-rbt-group'>
+                        <input type="radio" id="radioleft" name="ContributorType" value="Admin" checked="@(Model.ContributorType=="Admin")" />
+                        <label class="e-btn" for="radioleft">Admin</label>
+                        <input type="radio" id="radiomiddle" name="ContributorType" value="Contributor" checked="@(Model.ContributorType=="Contributor")" />
+                        <label class="e-btn" for="radiomiddle">Contributor</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <ejs-textbox id="contributorName" placeholder="ContributorName" ejs-for="ContributorName" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="ContributorName" class="text-danger" fs-6></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-textbox id="contributorIcon" placeholder="ContributorIcon" ejs-for="ContributorIcon" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="ContributorIcon" class="text-danger" fs-6></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-textbox id="contributorEmail" placeholder="ContributorEmail" ejs-for="ContributorEmail" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="ContributorEmail" class="text-danger" fs-6></span>
+                </div>
+                <ejs-button id="submit" type="submit" content="Submit" cssClass="e-success"></ejs-button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="widget h-100 d-flex justify-content-center align-items-center">
+            <i class="fa-regular fa-contributor fa-2xl"></i>
+        </div>
+    </div>
+</div>
+
+@*@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}*@

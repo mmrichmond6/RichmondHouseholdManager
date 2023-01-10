@@ -13,7 +13,7 @@ namespace HouseholdManager.Data
 
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Mission> Missions { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<Contributor> Contributors { get; set; }
 
 
     }
