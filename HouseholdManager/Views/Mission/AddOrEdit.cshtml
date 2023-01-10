@@ -13,9 +13,9 @@
                 <input type="hidden" name="MissionId" value="@Model.MissionId" />
                 <div class="mb-3">
                     <div class='e-btn-group custom-rbt-group'>
-                    <input type="radio" id="radioleft" name="Type" value="ToDo" checked="@(Model.MissionStatus=="ToDo")" />
+                    <input type="radio" id="radioleft" name="MissionStatus" value="ToDo" checked="@(Model.MissionStatus=="ToDo")" />
                     <label class="e-btn" for="radioleft">ToDo</label>
-                    <input type="radio" id="radiomiddle" name="Type" value="Done" checked="@(Model.MissionStatus=="Done")" />
+                    <input type="radio" id="radiomiddle" name="MissionStatus" value="Done" checked="@(Model.MissionStatus=="Done")" />
                     <label class="e-btn" for="radiomiddle">Done</label>
                 </div>
                 </div>

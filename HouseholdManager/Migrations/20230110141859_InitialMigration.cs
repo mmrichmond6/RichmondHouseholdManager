@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -14,8 +15,8 @@ namespace HouseholdManager.Migrations
                 {
                     RoomId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    Icon = table.Column<string>(type: "nvarchar(5)", nullable: false)
+                    RoomName = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    RoomIcon = table.Column<string>(type: "nvarchar(5)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -29,8 +30,8 @@ namespace HouseholdManager.Migrations
                     UserId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserName = table.Column<string>(type: "nvarchar(20)", nullable: false),
-                    Type = table.Column<string>(type: "nvarchar(5)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserType = table.Column<string>(type: "nvarchar(5)", nullable: false),
+                    UserEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserIcon = table.Column<string>(type: "nvarchar(5)", nullable: false)
                 },
                 constraints: table =>
@@ -48,7 +49,10 @@ namespace HouseholdManager.Migrations
                     MissionIcon = table.Column<string>(type: "nvarchar(5)", nullable: false),
                     RoomId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    Points = table.Column<int>(type: "int", nullable: false)
+                    MissionPoints = table.Column<int>(type: "int", nullable: false),
+                    MissionInstructions = table.Column<string>(type: "nvarchar(75)", nullable: true),
+                    MissionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    MissionStatus = table.Column<string>(type: "nvarchar(10)", nullable: false)
                 },
                 constraints: table =>
                 {

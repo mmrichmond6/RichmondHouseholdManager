@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HouseholdManager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230109152015_Mission")]
-    partial class Mission
+    [Migration("20230110141859_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,29 +32,29 @@ namespace HouseholdManager.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MissionId"), 1L, 1);
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime>("MissionDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Instructions")
-                        .HasColumnType("nvarchar(75)");
 
                     b.Property<string>("MissionIcon")
                         .IsRequired()
                         .HasColumnType("nvarchar(5)");
 
+                    b.Property<string>("MissionInstructions")
+                        .HasColumnType("nvarchar(75)");
+
                     b.Property<string>("MissionName")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("Points")
+                    b.Property<int>("MissionPoints")
                         .HasColumnType("int");
+
+                    b.Property<string>("MissionStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<int>("RoomId")
                         .HasColumnType("int");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(10)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -76,11 +76,11 @@ namespace HouseholdManager.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoomId"), 1L, 1);
 
-                    b.Property<string>("Icon")
+                    b.Property<string>("RoomIcon")
                         .IsRequired()
                         .HasColumnType("nvarchar(5)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("RoomName")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
@@ -97,12 +97,8 @@ namespace HouseholdManager.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
 
-                    b.Property<string>("Email")
+                    b.Property<string>("UserEmail")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(5)");
 
                     b.Property<string>("UserIcon")
                         .IsRequired()
@@ -111,6 +107,10 @@ namespace HouseholdManager.Migrations
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("UserType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(5)");
 
                     b.HasKey("UserId");
 

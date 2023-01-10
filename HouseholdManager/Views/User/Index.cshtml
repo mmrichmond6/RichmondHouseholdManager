@@ -13,7 +13,7 @@
             <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
             <e-grid-columns>
                 <e-grid-column headerText="UserName" field="UserNameWithIcon"></e-grid-column>
-                <e-grid-column headerText="Type" template="#typeColumnTemplate" width="150px"></e-grid-column>
+                <e-grid-column headerText="UserType" template="#typeColumnTemplate" width="150px"></e-grid-column>
                 <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="100px"></e-grid-column>
             </e-grid-columns>
         </ejs-grid>
@@ -26,10 +26,10 @@
 </div>
 
 <script id="typeColumnTemplate" type="text/x-template">
-    ${if(Type=="User")}
-        <span class="badge bg-success">${Type}</span>
+    ${if(UserType=="User")}
+        <span class="badge bg-success">${UserType}</span>
     ${else}
-        <span class="badge bg-danger">${Type}</span>
+        <span class="badge bg-danger">${UserType}</span>
         ${/if}
 </script>
 
