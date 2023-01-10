@@ -11,9 +11,9 @@ namespace HouseholdManager.Controllers
 {
     public class RoomController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly HouseholdManagerDbContext _context;
 
-        public RoomController(ApplicationDbContext context)
+        public RoomController(HouseholdManagerDbContext context)
         {
             _context = context;
         }

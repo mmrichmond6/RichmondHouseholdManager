@@ -11,9 +11,9 @@ namespace HouseholdManager.Controllers
 {
     public class MissionController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly HouseholdManagerDbContext _context;
 
-        public MissionController(ApplicationDbContext context)
+        public MissionController(HouseholdManagerDbContext context)
         {
             _context = context;
         }

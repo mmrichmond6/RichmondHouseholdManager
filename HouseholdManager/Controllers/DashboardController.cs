@@ -6,9 +6,9 @@ namespace HouseholdManager.Controllers
 {
     public class DashboardController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly HouseholdManagerDbContext _context;
 
-        public DashboardController(ApplicationDbContext context)
+        public DashboardController(HouseholdManagerDbContext context)
         {
             _context = context;
         }

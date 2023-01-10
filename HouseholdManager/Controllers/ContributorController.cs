@@ -11,9 +11,9 @@ namespace HouseholdManager.Controllers
 {
     public class ContributorController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly HouseholdManagerDbContext _context;
 
-        public ContributorController(ApplicationDbContext context)
+        public ContributorController(HouseholdManagerDbContext context)
         {
             _context = context;
         }
