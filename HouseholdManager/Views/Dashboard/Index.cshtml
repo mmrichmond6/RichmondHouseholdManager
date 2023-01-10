@@ -13,6 +13,9 @@
 <div class="row">
     <div class="row mb-4">
         <div class="col-md-9">
+            <div class="p-4">
+                <h5 class="fw-bold">Missions available to do:</h5>
+            </div>
             <ejs-grid id="missions" dataSource="@ViewBag.SelectedMissionsToDo" gridLines="None"
                       allowSorting="true" allowPaging="true">
                 <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
@@ -21,13 +24,13 @@
                     <e-grid-column headerText="Mission Name" field="MissionNameWithIcon"></e-grid-column>
                     <e-grid-column headerText="User" field="UserNameWithIcon" width="150px" textAlign="Left"></e-grid-column>
                     <e-grid-column headerText="Room" field="RoomNameWithIcon" width="150px" textAlign="Left"></e-grid-column>
-                    <e-grid-column headerText="Points" field="Points" width="100px" textAlign="Center"></e-grid-column>
+                    <e-grid-column headerText="Points" field="MissionPoints" width="100px" textAlign="Center"></e-grid-column>
                     <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="100px"></e-grid-column>
                 </e-grid-columns>
             </ejs-grid>
         </div>
     </div>
-    <partial name="_Sidebar" />
+
 </div>
 
 <script id="typeColumnTemplate" type="text/x-template">
@@ -67,7 +70,7 @@
                         <e-accumulationseries-datalabel name="formattedAmount" visible></e-accumulationseries-datalabel>
                     </e-accumulation-series>
                 </e-accumulation-series-collection>
-                <e-accumulationchart-legendsettings position="Top">
+                <e-accumulationchart-legendsettings position="Bottom">
                     <e-legendsettings-textstyle  color="#fff" size="1rem"></e-legendsettings-textstyle>
                 </e-accumulationchart-legendsettings>
                 <e-accumulationchart-tooltipsettings enable></e-accumulationchart-tooltipsettings>

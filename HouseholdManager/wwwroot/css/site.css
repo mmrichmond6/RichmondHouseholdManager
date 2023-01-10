@@ -20,7 +20,7 @@ html {
     margin-bottom: 60px;
     background-color: #12161d;
     color: #fff;
-    overflow: hidden;
+    overflow: auto;
 } .e-bigger {
     font-size: x-large;
 } .main-content {
