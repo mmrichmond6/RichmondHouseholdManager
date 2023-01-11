@@ -35,17 +35,22 @@ namespace HouseholdManager.Migrations
 
                     b.Property<string>("ContributorIcon")
                         .IsRequired()
-                        .HasColumnType("nvarchar(5)");
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("ContributorName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("ContributorType")
                         .IsRequired()
-                        .HasColumnType("nvarchar(12)");
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("HouseholdId")
+                        .HasColumnType("int");
 
                     b.HasKey("ContributorId");
+
+                    b.HasIndex("HouseholdId");
 
                     b.ToTable("Contributors");
                 });
@@ -60,7 +65,7 @@ namespace HouseholdManager.Migrations
 
                     b.Property<string>("HouseholdIcon")
                         .IsRequired()
-                        .HasColumnType("nvarchar(5)");
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("HouseholdName")
                         .IsRequired()
@@ -87,10 +92,10 @@ namespace HouseholdManager.Migrations
 
                     b.Property<string>("MissionIcon")
                         .IsRequired()
-                        .HasColumnType("nvarchar(5)");
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("MissionInstructions")
-                        .HasColumnType("nvarchar(75)");
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("MissionName")
                         .IsRequired()
@@ -101,7 +106,7 @@ namespace HouseholdManager.Migrations
 
                     b.Property<string>("MissionStatus")
                         .IsRequired()
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("RoomId")
                         .HasColumnType("int");
@@ -125,7 +130,7 @@ namespace HouseholdManager.Migrations
 
                     b.Property<string>("RoomIcon")
                         .IsRequired()
-                        .HasColumnType("nvarchar(5)");
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("RoomName")
                         .IsRequired()
@@ -336,6 +341,17 @@ namespace HouseholdManager.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("HouseholdManager.Models.Contributor", b =>
+                {
+                    b.HasOne("HouseholdManager.Models.Household", "Household")
+                        .WithMany()
+                        .HasForeignKey("HouseholdId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Household");
                 });
 
             modelBuilder.Entity("HouseholdManager.Models.Mission", b =>

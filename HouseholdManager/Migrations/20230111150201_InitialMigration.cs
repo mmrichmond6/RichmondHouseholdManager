@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HouseholdManager.Migrations
 {
-    public partial class InitialIdentity : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -49,19 +49,17 @@ namespace HouseholdManager.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Contributors",
+                name: "Household",
                 columns: table => new
                 {
-                    ContributorId = table.Column<int>(type: "int", nullable: false)
+                    HouseholdId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ContributorName = table.Column<string>(type: "nvarchar(20)", nullable: false),
-                    ContributorType = table.Column<string>(type: "nvarchar(12)", nullable: false),
-                    ContributorEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ContributorIcon = table.Column<string>(type: "nvarchar(5)", nullable: false)
+                    HouseholdName = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    HouseholdIcon = table.Column<string>(type: "nvarchar(50)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Contributors", x => x.ContributorId);
+                    table.PrimaryKey("PK_Household", x => x.HouseholdId);
                 });
 
             migrationBuilder.CreateTable(
@@ -71,7 +69,7 @@ namespace HouseholdManager.Migrations
                     RoomId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RoomName = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    RoomIcon = table.Column<string>(type: "nvarchar(5)", nullable: false)
+                    RoomIcon = table.Column<string>(type: "nvarchar(50)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -185,19 +183,42 @@ namespace HouseholdManager.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Contributors",
+                columns: table => new
+                {
+                    ContributorId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ContributorName = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    ContributorType = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    ContributorEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ContributorIcon = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    HouseholdId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Contributors", x => x.ContributorId);
+                    table.ForeignKey(
+                        name: "FK_Contributors_Household_HouseholdId",
+                        column: x => x.HouseholdId,
+                        principalTable: "Household",
+                        principalColumn: "HouseholdId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Missions",
                 columns: table => new
                 {
                     MissionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MissionName = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    MissionIcon = table.Column<string>(type: "nvarchar(5)", nullable: false),
+                    MissionIcon = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     RoomId = table.Column<int>(type: "int", nullable: false),
                     ContributorId = table.Column<int>(type: "int", nullable: false),
                     MissionPoints = table.Column<int>(type: "int", nullable: false),
-                    MissionInstructions = table.Column<string>(type: "nvarchar(75)", nullable: true),
+                    MissionInstructions = table.Column<string>(type: "nvarchar(200)", nullable: true),
                     MissionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MissionStatus = table.Column<string>(type: "nvarchar(10)", nullable: false)
+                    MissionStatus = table.Column<string>(type: "nvarchar(50)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -256,6 +277,11 @@ namespace HouseholdManager.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Contributors_HouseholdId",
+                table: "Contributors",
+                column: "HouseholdId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Missions_ContributorId",
                 table: "Missions",
                 column: "ContributorId");
@@ -297,6 +323,9 @@ namespace HouseholdManager.Migrations
 
             migrationBuilder.DropTable(
                 name: "Rooms");
+
+            migrationBuilder.DropTable(
+                name: "Household");
         }
     }
 }

@@ -31,13 +31,22 @@
                     <ejs-textbox id="contributorEmail" placeholder="ContributorEmail" ejs-for="ContributorEmail" floatLabelType="Always"></ejs-textbox>
                     <span asp-validation-for="ContributorEmail" class="text-danger" fs-6></span>
                 </div>
+                <div class="mb-3">
+                    <ejs-dropdownlist id="ddlHousehold" ejs-for="HouseholdId"
+                                      dataSource="@ViewBag.Households" placeholder="Household"
+                                      floatLabelType="Always" allowFiltering="true" ignoreAccent="true"
+                                      filterType="Contains" popupHeight="220px">
+                        <e-dropdownlist-fields value="HouseholdId" text="HouseholdNameWithIcon"></e-dropdownlist-fields>
+                    </ejs-dropdownlist>
+                    <span asp-validation-for="HouseholdId" class="text-danger" fs-6></span>
+                </div>
                 <ejs-button id="submit" type="submit" content="Submit" cssClass="e-success"></ejs-button>
             </form>
         </div>
     </div>
     <div class="col-md-5">
         <div class="widget h-100 d-flex justify-content-center align-items-center">
-            <i class="fa-regular fa-contributor fa-2xl"></i>
+            <i class="fa-solid fa-user-large fa-2xl"></i>
         </div>
     </div>
 </div>

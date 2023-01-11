@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HouseholdManager.Data;
 using HouseholdManager.Models;
+using static HouseholdManager.Models.Household;
 
 namespace HouseholdManager.Controllers
 {
@@ -19,10 +20,16 @@ namespace HouseholdManager.Controllers
             _context = context;
         }
 
+        // GET: Household
+        public async Task<IActionResult> Index()
+        {
+            var applicationDbContext = _context.Households;
+            return View(await applicationDbContext.ToListAsync());
+        }
+
         // GET: Household/AddOrEdit
         public IActionResult AddOrEdit(int id = 0)
         {
-
             if (id == 0)
                 return View(new Models.Household());
             else
@@ -67,6 +74,5 @@ namespace HouseholdManager.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Dashboard");
         }
-
-    }
+    }    
 }

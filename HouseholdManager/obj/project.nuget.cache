@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "v6+cBzfvxSYIFKuKylsatrQuwGwfbi83Jfc+JEx+nMsvBrBhKfhpT5ZGtqwUc70epH5Et1ZsTVvAlqQBqtVQNQ==",
+  "dgSpecHash": "0CP/XaLWv5aZiOznpdNmOOMFi6MsAzdbQ9L7yDQInHwQU2FdDVecRHbF6fJm0Mmkx4Y1gNTbT+yokwnGr/USAQ==",
   "success": true,
-  "projectFilePath": "G:\\My Drive\\LaunchCode\\LiftOff\\RichmondHouseholdManager(AddIdentity)\\HouseholdManager\\HouseholdManager.csproj",
+  "projectFilePath": "G:\\My Drive\\LaunchCode\\LiftOff\\RichmondHouseholdManager(AddIdentityAgain)\\HouseholdManager\\HouseholdManager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mmric\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\mmric\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
