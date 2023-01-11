@@ -10508,11 +10508,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\My Drive\\LaunchCode\\LiftOff\\RichmondHouseholdManager(AddIdentity)\\HouseholdManager\\HouseholdManager.csproj",
+      "projectUniqueName": "G:\\My Drive\\LaunchCode\\LiftOff\\RichmondHouseholdManager(AddIdentityAgain)\\HouseholdManager\\HouseholdManager.csproj",
       "projectName": "HouseholdManager",
-      "projectPath": "G:\\My Drive\\LaunchCode\\LiftOff\\RichmondHouseholdManager(AddIdentity)\\HouseholdManager\\HouseholdManager.csproj",
+      "projectPath": "G:\\My Drive\\LaunchCode\\LiftOff\\RichmondHouseholdManager(AddIdentityAgain)\\HouseholdManager\\HouseholdManager.csproj",
       "packagesPath": "C:\\Users\\mmric\\.nuget\\packages\\",
-      "outputPath": "G:\\My Drive\\LaunchCode\\LiftOff\\RichmondHouseholdManager(AddIdentity)\\HouseholdManager\\obj\\",
+      "outputPath": "G:\\My Drive\\LaunchCode\\LiftOff\\RichmondHouseholdManager(AddIdentityAgain)\\HouseholdManager\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\mmric\\AppData\\Roaming\\NuGet\\NuGet.Config",
