@@ -16,7 +16,7 @@ namespace HouseholdManager.Models
         [Required(ErrorMessage = "Name of mission is required.")]
         public string MissionName { get; set; }
 
-        [Column(TypeName = "nvarchar(5)")]
+        [Column(TypeName = "nvarchar(50)")]
         public string MissionIcon { get; set; } = "";
 
         //RoomId-Foreign Key
@@ -34,12 +34,12 @@ namespace HouseholdManager.Models
         [Range(1, 5, ErrorMessage = "Amount should be greater than zero and no more than five.")]
         public int MissionPoints { get; set; }
 
-        [Column(TypeName = "nvarchar(75)")]
+        [Column(TypeName = "nvarchar(200)")]
         public string? MissionInstructions { get; set; }
 
         public DateTime MissionDate { get; set; } = DateTime.Now;
 
-        [Column(TypeName = "nvarchar(10)")]
+        [Column(TypeName = "nvarchar(50)")]
         public string MissionStatus { get; set; } = "ToDo";
 
         [NotMapped]

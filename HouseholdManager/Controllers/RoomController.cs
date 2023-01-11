@@ -21,13 +21,13 @@ namespace HouseholdManager.Controllers
         // GET: Room
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Rooms.ToListAsync());
+            var applicationDbContext = _context.Rooms;
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Room/AddOrEdit
         public IActionResult AddOrEdit(int id = 0)
         {
-           
             if (id == 0)
                 return View(new Models.Room());
             else
@@ -72,6 +72,5 @@ namespace HouseholdManager.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Dashboard");
         }
-
     }
 }

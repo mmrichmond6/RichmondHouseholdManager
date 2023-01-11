@@ -21,13 +21,15 @@ namespace HouseholdManager.Controllers
         // GET: Contributor
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Contributors.ToListAsync());
+            var applicationDbContext = _context.Contributors.Include(t => t.Household);
+            return View(await applicationDbContext.ToListAsync());
         }
 
 
         // GET: Contributor/AddOrEdit
         public IActionResult AddOrEdit(int id = 0)
         {
+            PopulateHouseholds();
             if (id == 0)
                 return View(new Contributor());
             else
@@ -39,7 +41,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit([Bind("ContributorId,ContributorName,ContributorType,ContributorEmail,ContributorIcon")] Contributor contributor)
+        public async Task<IActionResult> AddOrEdit([Bind("ContributorId,ContributorName,ContributorType,ContributorEmail,ContributorIcon,HouseholdId")] Contributor contributor)
         {
             if (ModelState.IsValid)
             {
@@ -50,6 +52,7 @@ namespace HouseholdManager.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "Dashboard");
             }
+            PopulateHouseholds();
             return View(contributor);
         }
 
@@ -71,6 +74,15 @@ namespace HouseholdManager.Controllers
             
             await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Dashboard");
+        }
+
+        [NonAction]
+        public void PopulateHouseholds()
+        {
+            var HouseholdCollection = _context.Households.ToList();
+            Household DefaultHousehold = new Household() { HouseholdId = 0, HouseholdName = "Choose a Household" };
+            HouseholdCollection.Insert(0, DefaultHousehold);
+            ViewBag.Households = HouseholdCollection;
         }
 
     }
