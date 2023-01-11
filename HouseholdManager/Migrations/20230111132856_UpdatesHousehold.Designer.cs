@@ -4,6 +4,7 @@ using HouseholdManager.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HouseholdManager.Migrations
 {
     [DbContext(typeof(HouseholdManagerDbContext))]
-    partial class HouseholdManagerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230111132856_UpdatesHousehold")]
+    partial class UpdatesHousehold
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,7 +65,7 @@ namespace HouseholdManager.Migrations
 
                     b.Property<string>("HouseholdIcon")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(5)");
 
                     b.Property<string>("HouseholdName")
                         .IsRequired()

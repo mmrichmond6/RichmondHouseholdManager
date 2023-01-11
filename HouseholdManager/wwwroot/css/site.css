@@ -233,3 +233,19 @@ img.profile-pic {
     } .widget.chart {
         padding: 5px;
     }
+
+/*Multi-Select drop down*/
+.control-wrapper {
+    margin: 0 auto;
+    width: 250px;
+}
+
+#submitbutton {
+    margin: 10px auto;
+    text-align: center;
+}
+
+#errorMessage {
+    color: red;
+    text-align: center
+}

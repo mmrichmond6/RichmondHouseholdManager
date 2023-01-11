@@ -19,6 +19,39 @@
                     <ejs-textbox id="householdicon" placeholder="HouseholdIcon" ejs-for="HouseholdIcon" floatLabelType="Always"></ejs-textbox>
                     <span asp-validation-for="HouseholdIcon" class="text-danger" fs-6></span>
                 </div>
+                <div class="mb-3">
+                    <ejs-dropdownlist id="ddlRoom" ejs-for="RoomId"
+                            dataSource="@ViewBag.Rooms" placeholder="Room"
+                            floatLabelType="Always" allowFiltering="true" ignoreAccent="true"
+                            filterType="Contains" popupHeight="220px">
+                        <e-dropdownlist-fields value="RoomId" text="RoomNameWithIcon"></e-dropdownlist-fields>
+                    </ejs-dropdownlist>
+                    <span asp-validation-for="RoomId" class="text-danger" fs-6></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-dropdownlist id="ddlContributor" ejs-for="ContributorId"
+                            dataSource="@ViewBag.Contributors" placeholder="Contributor"
+                            floatLabelType="Always" allowFiltering="true" ignoreAccent="true"
+                            filterType="Contains" popupHeight="220px">
+                        <e-dropdownlist-fields value="ContributorId" text="ContributorNameWithIcon"></e-dropdownlist-fields>
+                    </ejs-dropdownlist>
+                    <span asp-validation-for="ContributorId" class="text-danger" fs-6></span>
+                </div>
+                @*                <div class="mb-3">
+                    <ejs-multiselect id="multiselectforRoom" name="val" dataSource="@ViewBag.Rooms" placeholder="Rooms" ejs-for="@Model.val"></ejs-multiselect>
+                <div id="errorMessage">
+                    <span asp-validation-for="val"></span>
+                </div>*@
+@*                </div>
+
+                <div class="mb-3">
+                    <div>
+                        <ejs-multiselect id="ContributorIds" dataSource="@ViewBag.ContributorIds" mode="CheckBox" 
+                        placeholder="Contributors">
+                            <e-multiselect-fields value="ContributorIds" text="ContributorNameWithIcon"></e-multiselect-fields>
+                        </ejs-multiselect>
+                    <span asp-validation-for="ContributorId" class="text-danger" fs-6></span>
+                </div>*@
                 <ejs-button id="submit" type="submit" content="Submit" cssClass="e-success"></ejs-button>
             </form>
         </div>

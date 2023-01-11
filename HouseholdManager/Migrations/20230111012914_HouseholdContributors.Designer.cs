@@ -4,6 +4,7 @@ using HouseholdManager.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HouseholdManager.Migrations
 {
     [DbContext(typeof(HouseholdManagerDbContext))]
-    partial class HouseholdManagerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230111012914_HouseholdContributors")]
+    partial class HouseholdContributors
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,18 +60,24 @@ namespace HouseholdManager.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HouseholdId"), 1L, 1);
 
-                    b.Property<int>("ContributorId")
+                    b.Property<int?>("ContributorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ContributorIds")
                         .HasColumnType("int");
 
                     b.Property<string>("HouseholdIcon")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(5)");
 
                     b.Property<string>("HouseholdName")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("RoomId")
+                    b.Property<int?>("RoomId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoomIds")
                         .HasColumnType("int");
 
                     b.HasKey("HouseholdId");
@@ -352,15 +360,11 @@ namespace HouseholdManager.Migrations
                 {
                     b.HasOne("HouseholdManager.Models.Contributor", "Contributor")
                         .WithMany()
-                        .HasForeignKey("ContributorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ContributorId");
 
                     b.HasOne("HouseholdManager.Models.Room", "Room")
                         .WithMany()
-                        .HasForeignKey("RoomId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RoomId");
 
                     b.Navigation("Contributor");
 
