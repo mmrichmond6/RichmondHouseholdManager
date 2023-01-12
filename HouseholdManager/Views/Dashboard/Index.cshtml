@@ -84,7 +84,7 @@
                 </div>
                 <div class="px-4 pb-4">
                     <ejs-grid id="recent-missions"
-                              dataSource="@ViewBag.RecentMissions" gridLines="None">
+                          dataSource="@ViewBag.RecentMissions" gridLines="None" allowSorting="true" allowPaging="true">
                         <e-grid-columns>
                             <e-grid-column headerText="Mission" field="MissionNameWithIcon" textAlign="Left"></e-grid-column>
                             <e-grid-column headerText="Date" field="MissionDate" typeof="Date" format="MMM-dd" textAlign="Center"></e-grid-column>

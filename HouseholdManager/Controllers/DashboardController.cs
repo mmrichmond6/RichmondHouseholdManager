@@ -43,7 +43,7 @@ namespace HouseholdManager.Controllers
                 .GroupBy(j => j.Contributor.ContributorId)
                 .Select(k => new
                 {
-                    contributorNameWithIcon = k.First().Contributor.ContributorNameWithIcon + " " + k.First().Contributor.ContributorName,
+                    contributorNameWithIcon = k.First().Contributor.ContributorIcon + " " + k.First().Contributor.ContributorName,
                     amount = k.Sum(j => j.MissionPoints),
                     formattedAmount = k.Sum(j => j.MissionPoints).ToString("0"),
                 })
