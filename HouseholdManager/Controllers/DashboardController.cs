@@ -1,4 +1,5 @@
 ﻿using HouseholdManager.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +14,7 @@ namespace HouseholdManager.Controllers
             _context = context;
         }
 
+        [Authorize]
         public async Task<ActionResult> Index()
         {
             //Last 7 Days
