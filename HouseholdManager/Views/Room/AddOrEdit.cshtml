@@ -1,0 +1,38 @@
+﻿@model HouseholdManager.Models.Room
+
+@{
+    ViewData["PageTitle"] = Model.RoomId == 0 ? "Create a new room" : "Edit room";
+}
+
+
+<div class="row">
+    <div class="col-md-7">
+        <div class="widget p-5" style="background-color: #1a222b">
+            <form asp-action="AddOrEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" name="RoomId" value="@Model.RoomId" />
+                <div class="mb-3">
+                    <ejs-textbox id="roomname" placeholder="RoomName" ejs-for="RoomName" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="RoomName" class="text-danger" fs-6></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="RoomIcon" class="control-label"></label>
+                    <input asp-for="RoomIcon" id="iconInput" class="form-control" hidden />
+                    @*<ejs-textbox id="roomicon" placeholder="RoomIcon" ejs-for="RoomIcon" floatLabelType="Always"></ejs-textbox>*@
+                    @await Html.PartialAsync("_IconMenuPartial")
+                    <span asp-validation-for="RoomIcon" class="text-danger" fs-6></span>
+                </div>
+                <ejs-button id="submit" type="submit" content="Submit" cssClass="e-success"></ejs-button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="widget h-100 d-flex justify-content-center align-items-center">
+            <i class="fa-solid fa-door-closed fa-2xl"></i>
+        </div>
+    </div>
+</div>
+
+@*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@

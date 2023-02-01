@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using HouseholdManager.Models
+
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User)) 
+    {
+        <li>
+            <a asp-area="" asp-controller="Admin" asp-action="Index" class="nav-link">Hello @UserManager.GetUserName(User)!</a>
+        </li>
+        <li>
+            <a asp-area="" asp-controller="Account" asp-action="Logout" class="nav-link">Log Out</a>
+        </li>
+    }
+    else
+    {
+        <li>
+            <a asp-area="" asp-controller="Admin" asp-action="Create" class="nav-link">Register</a>
+        </li>
+        <li>
+            <a asp-area="" asp-controller="Account" asp-action="Login" class="nav-link">Log In</a>
+        </li>
+        <li>
+            <a asp-area="" asp-controller="Account" asp-action="Logout" class="nav-link">Log Out</a>
+        </li>
+    }
+</ul>
